@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { testFeatureReducer } from "./TestFeature/reducer";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     testFeature: testFeatureReducer,
   },
 });
 
-export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
