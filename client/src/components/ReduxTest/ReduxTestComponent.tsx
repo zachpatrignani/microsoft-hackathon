@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setData2 } from "../redux/TestFeature/TestFeatureSlice";
+import { setData2 } from "../../redux/TestFeature/TestFeatureSlice";
 
 const ReduxTestComponent = () => {
   const temp = useSelector((state: any ) => state.testFeature.data2);

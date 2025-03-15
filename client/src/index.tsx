@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import JobBoard from './screens/JobBoard';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import  { store }  from './redux/store'
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <App />
+    <JobBoard />
   </Provider>,
 );
 
