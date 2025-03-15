@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setData2 } from "../redux/TestFeature/reducer";
 
-const TestComponent = () => {
+const ReduxTestComponent = () => {
   const [count, setCount] = useState(0);
   const temp = useSelector((state: any ) => state.testFeature.data2);
 
@@ -22,6 +22,6 @@ const TestComponent = () => {
   );
 };
 
-export {TestComponent};
+export {ReduxTestComponent};
 
 

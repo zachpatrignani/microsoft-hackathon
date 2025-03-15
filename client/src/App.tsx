@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {TestComponent} from './components/TestComponent'
+import {ReduxTestComponent} from './components/ReduxTestComponent'
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
         >
           Learn React
         </a>
-        <TestComponent/>
       </header>
     </div>
   );
