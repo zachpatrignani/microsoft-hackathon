@@ -33,11 +33,14 @@ const JobListContainer = () => {
 
         for (let i = 0 ; i < 150; ++i){
             const newJob : Job  = {
-                title : `testJob${i}`,
+                title : `Job number ${i}`,
                 description : "test2",
                 datePosted : new Date(),
-                remote : i,
-                salary : 100000
+                remote : i % 3,
+                salary : 100000,
+                city : "Chicago",
+                state: "IL",
+                company: `Company number ${i}`
             }
             
             newJobList.push(newJob);

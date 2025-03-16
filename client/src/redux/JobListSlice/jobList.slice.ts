@@ -3,11 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 // Define Interface
 export interface Job {
     title?: string,
-    description?: string,
+    company?: string,
+    city?: string,
+    state?: string,
     salary?: number,
     remote?: number,
+    contactName?: string,
+    contactPhone?: string,
+    contactEmail?: string,
+    description?: string,
     datePosted?: Date,
-    workType?: string
 }
 
 export interface JobListState {
