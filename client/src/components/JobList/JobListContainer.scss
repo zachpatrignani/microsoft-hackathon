@@ -2,56 +2,54 @@
 
 .pagination-wrapper {
     display: flex;
-    align-content: center;
-    justify-content: center; /* Aligns pagination to the right */
+    justify-content: center; /* Centers the pagination horizontally */
+    align-items: center;  /* Optionally, if you want to vertically align items (useful for tall containers) */
     width: 100%; /* Ensures it takes the full width of the container */
-  }
-  
-  .pagination {
+    margin-top: 1rem; /* Adds some space above */
+}
+
+.pagination {
     display: flex;
     list-style: none;
     padding: 0;
-    margin-top: 1rem;
-  
+    margin: 0;
+
     li {
-      margin: 0 5px;
-  
-      a {
-        display: block;
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        text-decoration: none;
-        color: #333;
-        transition: background 0.3s ease, color 0.3s ease;
-  
-        &:hover {
-          background: #f0f0f0;
+        margin-top: 5px;
+        // margin: 0 0px;
+
+        a {
+            display: block;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background: #f0f0f0;
+            }
         }
-      }
-  
-      &.active a {
-        background: #007bff;
-        color: #fff;
-        font-weight: bold;
-        border-color: #007bff;
-      }
-  
-      &.disabled a {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
+
+        &.active a {
+            background: #007bff;
+            color: #fff;
+            font-weight: bold;
+            border-color: #007bff;
+        }
+
+        &.disabled a {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     }
-  
+
     .previous a,
     .next a {
-      font-weight: bold;
+        font-weight: bold;
     }
-
-    
-  }
-
-
+}
 
 .job-list-and-details {
     display: flex;

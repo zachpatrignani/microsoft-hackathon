@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Job } from "../../models/job";
 
 export interface JobListState {
-    allJobs?: Array<Job>
+    allJobs: Array<Job>
 }
 
 // Define initial state

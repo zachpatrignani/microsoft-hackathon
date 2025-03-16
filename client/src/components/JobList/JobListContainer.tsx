@@ -7,6 +7,7 @@ import ReactPaginate from 'react-paginate';
 import JobCard from './JobCard';
 import { Job } from '../../models/job';
 import { setJobList } from '../../redux/JobListSlice/jobList.slice';
+import { RootState } from '../../redux/store';
 
 
 const JobListContainer = () => {
@@ -16,7 +17,7 @@ const JobListContainer = () => {
     // const allJobs = Array.from({ length: 105 }, (_, i) => `Item ${i + 1}`);
     // const allJobs = new Array();
 
-    const allJobs = useSelector((state: any ) => state.jobList.allJobs);
+    const allJobs = useSelector((state: RootState ) => state.jobList.allJobs);
 
 
     const [items,setItems] = useState([...allJobs.slice(0,itemsPerPage)]);
@@ -24,6 +25,13 @@ const JobListContainer = () => {
     
     const handlePageClick = (event:any) => {
         setCurrentPage(event.selected);
+    };
+
+    const handleCardClick = (event:any) => {
+        console.log(event.name);
+        // set redux to active
+        // remove active className of previously active
+        // add active to the new one
     };
     
     const offset = currentPage * itemsPerPage;
@@ -65,7 +73,10 @@ const JobListContainer = () => {
         <div className='job-list-and-details'>
             <div className='job-list-window'>
                 {items.map((currentJob : Job, index: number) => (
-                    <JobCard jobObject={currentJob} />
+                    <JobCard 
+                        jobObject={currentJob}
+                        onClick={handleCardClick}
+                    />
                 ))}
             </div>
             <div className='job-active-details'>

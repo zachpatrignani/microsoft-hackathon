@@ -6,9 +6,14 @@ import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate'; 
 import { Job } from '../../models/job';
 import './JobCard.scss';
+import { MouseEventHandler } from 'react';
 
+interface JobCardProps {
+    jobObject: Job;
+    onClick: (event: any) => void; // Define the onClick prop type
+}
 
-const JobCard = ({ jobObject }: { jobObject: Job }) => {
+const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
 
     const getHowManyDaysSincePost = (postedDate: Date | any) => {
         const today : any = new Date();
@@ -37,7 +42,7 @@ const JobCard = ({ jobObject }: { jobObject: Job }) => {
 
     
     return (
-      <div className="job-card">
+      <div className="job-card" onClick={onClick}>
         <div className='job-card-logo-container'>
             <img className="job-card-logo" src="/placeholder-logo.jpg" alt="Job Image" />
         </div>
