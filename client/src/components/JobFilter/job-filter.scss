@@ -1,0 +1,30 @@
+.search-container {
+    padding: 20px;
+  }
+  .search-box input {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  .filters {
+    margin-top: 20px;
+  }
+  .salary-slider {
+    margin-top: 10px;
+  }
+  .salary-slider input {
+    width: 100%;
+  }
+  .sort-by-date button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .sort-by-date button:hover {
+    background-color: #0056b3;
+  }
+  
