@@ -6,8 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate'; 
 import JobCard from './JobCard';
 import { Job } from '../../models/job';
-import { setJobList } from '../../redux/JobListSlice/jobList.slice';
+import { setJobList, setActiveJobId } from '../../redux/JobListSlice/jobList.slice';
 import { RootState } from '../../redux/store';
+import ActiveJob from './ActiveJob';
 
 
 const JobListContainer = () => {
@@ -18,7 +19,7 @@ const JobListContainer = () => {
     // const allJobs = new Array();
 
     const allJobs = useSelector((state: RootState ) => state.jobList.allJobs);
-
+    const activeJobId = useSelector((state: RootState ) => state.jobList.activeJobId);
 
     const [items,setItems] = useState([...allJobs.slice(0,itemsPerPage)]);
     const [currentPage, setCurrentPage] = useState<number>(0);
@@ -27,9 +28,10 @@ const JobListContainer = () => {
         setCurrentPage(event.selected);
     };
 
-    const handleCardClick = (event:any) => {
-        console.log(event.name);
+    const handleCardClick = (jobObject:Job) => {
         // set redux to active
+        console.log("maheer", jobObject._id)
+        dispatch(setActiveJobId(jobObject._id))
         // remove active className of previously active
         // add active to the new one
     };
@@ -46,7 +48,7 @@ const JobListContainer = () => {
                 employmentType: "Part-Time",
                 name : `Job number ${i}`,
                 description : "test2",
-                _createdAt : new Date(),
+                _createdAt : new Date().toISOString(),
                 workType : "Remote",
                 wage : 100000,
                 city : "Chicago",
@@ -75,11 +77,12 @@ const JobListContainer = () => {
                 {items.map((currentJob : Job, index: number) => (
                     <JobCard 
                         jobObject={currentJob}
-                        onClick={handleCardClick}
+                        onClick={()=>{handleCardClick(currentJob)}}
                     />
                 ))}
             </div>
             <div className='job-active-details'>
+                <ActiveJob/>
             </div>
         </div>
         

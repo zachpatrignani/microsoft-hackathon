@@ -15,7 +15,8 @@ interface JobCardProps {
 
 const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
 
-    const getHowManyDaysSincePost = (postedDate: Date | any) => {
+    const getHowManyDaysSincePost = (postedDateIsoString: Date | any) => {
+        const postedDate: any = new Date(postedDateIsoString)
         const today : any = new Date();
         const diffTime = today - postedDate;  // Difference in milliseconds
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));  // Convert to days
@@ -40,9 +41,23 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
         }
     }
 
+    const handleCardClick = (event: any) => {
+        
+        const allCards = document.querySelectorAll('.job-card');
+        allCards.forEach((card) => {
+            card.classList.remove('active-card');
+        });
+    
+        // Add the "active" class to the clicked card
+        event.currentTarget.classList.add('active-card');
+    
+        // Call the parent onClick handler (optional if you want to pass the jobObject)
+        onClick(jobObject);
+        };
+
     
     return (
-      <div className="job-card" onClick={onClick}>
+      <div className="job-card" onClick={handleCardClick}>
         <div className='job-card-logo-container'>
             <img className="job-card-logo" src="/placeholder-logo.jpg" alt="Job Image" />
         </div>

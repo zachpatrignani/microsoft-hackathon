@@ -12,7 +12,7 @@ export interface Job {
     city?: string;
     state?: string;
     location?: string;
-    _createdAt: Date;
+    _createdAt: string;
     employmentType: JobEmploymentType;
     wage: number;
     workType: JobWorkType;
