@@ -1,19 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-// Define Interface
-export interface Job {
-    title?: string,
-    company?: string,
-    city?: string,
-    state?: string,
-    salary?: number,
-    remote?: number,
-    contactName?: string,
-    contactPhone?: string,
-    contactEmail?: string,
-    description?: string,
-    datePosted?: Date,
-}
+import { Job } from "../../models/job";
 
 export interface JobListState {
     allJobs?: Array<Job>

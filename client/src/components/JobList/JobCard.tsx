@@ -4,24 +4,11 @@ import './JobListContainer.scss';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate'; 
-import { Job }  from '../../redux/JobListSlice/jobList.slice';
+import { Job } from '../../models/job';
 import './JobCard.scss';
 
 
 const JobCard = ({ jobObject }: { jobObject: Job }) => {
-
-    const getRemoteFlexibilityString = (value: number | undefined) => {
-        switch (value) {
-            case 0:
-                return "(Fully-Remote)"
-            case 1:
-                return "(Hybrid)"
-            case 2:
-                return "(On-Site)"
-            default:
-                return ""
-        }
-    }
 
     const getHowManyDaysSincePost = (postedDate: Date | any) => {
         const today : any = new Date();
@@ -47,6 +34,7 @@ const JobCard = ({ jobObject }: { jobObject: Job }) => {
             return "N/A"
         }
     }
+
     
     return (
       <div className="job-card">
@@ -54,13 +42,13 @@ const JobCard = ({ jobObject }: { jobObject: Job }) => {
             <img className="job-card-logo" src="/placeholder-logo.jpg" alt="Job Image" />
         </div>
         <div className="job-card-content">
-          <div className="job-title">{jobObject.title}</div>
+          <div className="job-title">{jobObject.name}</div>
           <div className="job-salary">{jobObject.company}</div>
-          <div className="job-location">{jobObject.city},{jobObject.state} {getRemoteFlexibilityString(jobObject.remote)}</div>
+          <div className="job-location">{jobObject.city},{jobObject.state} ({jobObject.workType})</div>
         </div>
         <div className='job-salary-date-container'>
-            <div className='job-card-salary'>${jobObject.salary}/year</div>
-            <div className='job-card-date-posted'>posted {getHowManyDaysSincePost(jobObject.datePosted)}</div>
+            <div className='job-card-salary'>${jobObject.wage}/year</div>
+            <div className='job-card-date-posted'>posted {getHowManyDaysSincePost(jobObject._createdAt)}</div>
         </div>
       </div>
     );

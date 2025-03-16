@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate'; 
 import JobCard from './JobCard';
-import { Job } from '../../redux/JobListSlice/jobList.slice';
+import { Job } from '../../models/job';
 import { setJobList } from '../../redux/JobListSlice/jobList.slice';
 
 
@@ -33,14 +33,20 @@ const JobListContainer = () => {
 
         for (let i = 0 ; i < 150; ++i){
             const newJob : Job  = {
-                title : `Job number ${i}`,
+                _id: `${i}`,
+                employerId: `${i}`,
+                employmentType: "Part-Time",
+                name : `Job number ${i}`,
                 description : "test2",
-                datePosted : new Date(),
-                remote : i % 3,
-                salary : 100000,
+                _createdAt : new Date(),
+                workType : "Remote",
+                wage : 100000,
                 city : "Chicago",
                 state: "IL",
-                company: `Company number ${i}`
+                company: `Company number ${i}`,
+                employerPhone: "1234567890",
+                employerEmail:"employer@email.com",
+                industry:"Food"
             }
             
             newJobList.push(newJob);
@@ -56,11 +62,14 @@ const JobListContainer = () => {
 
     return (
         <div>
-        <h2>Paginated List</h2>
-        <div className='jobListFrame'>
-            {items.map((currentJob : Job, index: number) => (
-                <JobCard jobObject={currentJob} />
-            ))}
+        <div className='job-list-and-details'>
+            <div className='job-list-window'>
+                {items.map((currentJob : Job, index: number) => (
+                    <JobCard jobObject={currentJob} />
+                ))}
+            </div>
+            <div className='job-active-details'>
+            </div>
         </div>
         
         <ReactPaginate
