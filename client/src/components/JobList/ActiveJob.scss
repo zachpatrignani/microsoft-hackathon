@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Canva+Sans:wght@400;600;700&display=swap');
+
+.header-container {
+    display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin: 0;  // Remove space between cards
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;  // Ensure content doesn't overflow the card boundaries
+    font-family: 'Canva Sans', sans-serif;
+
+    .logo-container {
+        flex: 0 0 120px; // Fixed width for image container
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+        .logo {
+            width: 100%;
+        }
+    .main-title {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 10px;
+      font-size: 1.5rem;
+      padding-top: 30px;
+      font-weight: bold;
+      
+    }
+
+.job-details-container {
+    display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin: 0;  // Remove space between cards
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;  // Ensure content doesn't overflow the card boundaries
+    font-family: 'Canva Sans', sans-serif;
+    padding: 100px;
+
+
+}
+  
+//     .job-card-content {
+//       display: flex;
+//       flex-direction: column;
+//       height: 100%;
+//       padding: 10px;
+    
+//     }
+  
+//     .job-title {
+//       font-size: 1.2rem;
+//       font-weight: bold;
+//       color: #333;
+//     }
+  
+//     .job-location {
+//       font-size: .75rem;
+//       color: #555;
+//     }
+
+//     .job-salary-date-container {
+//         align-self: flex-start; // Moves it to the top
+//         margin-left: auto; // Pushes it to the right
+//         // font-weight: bold;
+//         padding: 10px;
+//         padding-right: 20px;
+//         text-align: right;
+//       }
+    
+  
+//     .job-card-salary {
+//         font-weight: bold;
+//         color: #333;
+//         font-size: 0.85rem;
+//       }
+
+//     .job-card-date-posted {
+//         font-size: .75rem;
+//         color: #555;
+//     }
+  
+//   }
+
+// .active-card {
+//     background-color: #ddd;
+}
+  

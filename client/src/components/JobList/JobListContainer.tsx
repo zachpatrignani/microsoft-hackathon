@@ -47,7 +47,6 @@ const JobListContainer = () => {
                 employerId: `${i}`,
                 employmentType: "Part-Time",
                 name : `Job number ${i}`,
-                description : "test2",
                 _createdAt : new Date().toISOString(),
                 workType : "Remote",
                 wage : 100000,
@@ -56,7 +55,14 @@ const JobListContainer = () => {
                 company: `Company number ${i}`,
                 employerPhone: "1234567890",
                 employerEmail:"employer@email.com",
-                industry:"Food"
+                industry:"Food",
+                description: `This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description.
+
+                This is the employer submitted job description. 
+                This is the employer submitted job description. 
+                This is the employer submitted job description. 
+                
+                This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. `
             }
             
             newJobList.push(newJob);
