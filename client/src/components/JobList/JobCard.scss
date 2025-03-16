@@ -1,0 +1,55 @@
+.job-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    height: 100px;
+    // width: 100%;
+    margin: 0;  // Remove space between cards
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;  // Ensure content doesn't overflow the card boundaries
+  
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.20);
+      cursor: pointer;
+    }
+  
+    .job-card-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    //   gap: 10px;
+    //   max-height: 100%;  // Prevent overflow of the content
+    //   overflow: hidden;
+    }
+  
+    .job-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .job-location {
+      font-size: .75rem;
+      color: #555;
+    }
+  
+    .job-salary {
+      font-size: .75rem;
+      color: #2dbe60; // Green for salary
+      white-space: nowrap;  // Prevent text from overflowing and breaking
+      overflow: hidden;  // Hide overflow content
+      text-overflow: ellipsis;  // Show ellipsis when content overflows
+    }
+  
+    .job-remote {
+      font-size: .75rem;
+      color: #007bff; // Blue for remote/on-site
+      font-weight: 600;
+      white-space: nowrap;  // Prevent text from overflowing and breaking
+      overflow: hidden;  // Hide overflow content
+      text-overflow: ellipsis;  // Show ellipsis when content overflows
+    }
+  }
+  

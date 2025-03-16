@@ -1,0 +1,80 @@
+.pagination-wrapper {
+    display: flex;
+    align-content: flex-end;
+    // justify-content: flex-end; /* Aligns pagination to the right */
+    width: 50%; /* Ensures it takes the full width of the container */
+  }
+  
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  
+    li {
+      margin: 0 5px;
+  
+      a {
+        display: block;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        transition: background 0.3s ease, color 0.3s ease;
+  
+        &:hover {
+          background: #f0f0f0;
+        }
+      }
+  
+      &.active a {
+        background: #007bff;
+        color: #fff;
+        font-weight: bold;
+        border-color: #007bff;
+      }
+  
+      &.disabled a {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  
+    .previous a,
+    .next a {
+      font-weight: bold;
+    }
+
+    
+  }
+
+  .jobListFrame {
+    height: 65vh;           // Set a fixed height for the container (adjust as needed)
+    margin-bottom: 50px;
+    overflow-y: auto;        // Enables vertical scrolling when the content overflows
+    padding: 10px;           // Optional padding inside the container for spacing
+    box-sizing: border-box;  // Ensures padding doesn't affect the element's dimensions
+    border: 1px;
+    border-color: #333;
+  }
+// .paginated-list-container {
+//   max-height: 100vh;  // Ensure the container doesn't exceed the screen height
+//   overflow-y: auto;   // Allow vertical scrolling
+//   padding: 0px;
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+// }
+
+// .job-list {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+//   max-height: calc(100vh - 60px);  // Subtracting the header height (h2) from total screen height
+//   overflow-y: auto;  // Ensure the list is scrollable
+//   overflow-x: hidden; // Disable horizontal scrolling if not needed
+// }
+
+  
