@@ -1,0 +1,14 @@
+.jobBoard {
+    width: 80%;             // or a specific width (e.g., 80%)
+    height: 100vh;           // or any fixed height (e.g., 500px)
+    // padding: 20px;           // Optional padding for inner spacing
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 80px;
+    
+    box-sizing: border-box;  // Include padding in width/height calculation
+    overflow: auto;          // Makes the content scrollable if it overflows
+    position: relative; 
+    justify-content: center; // Center content horizontally
+    align-items: center;     // Center content vertically
+  }

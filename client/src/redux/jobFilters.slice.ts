@@ -16,7 +16,7 @@ export const initialState: JobFiltersState = {
 
 // Define slice
 const jobFiltersSlice = createSlice({
-    name : "jobFilters",
+    name : "jobList",
     initialState,
     reducers: {
         setSalary(state, action) {

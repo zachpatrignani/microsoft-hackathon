@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Canva+Sans:wght@400;600;700&display=swap');
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center; /* Centers the pagination horizontally */
+    align-items: center;  /* Optionally, if you want to vertically align items (useful for tall containers) */
+    width: 100%; /* Ensures it takes the full width of the container */
+    margin-top: 1rem; /* Adds some space above */
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin-top: 5px;
+        // margin: 0 0px;
+
+        a {
+            display: block;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background: #f0f0f0;
+            }
+        }
+
+        &.active a {
+            background: #007bff;
+            color: #fff;
+            font-weight: bold;
+            border-color: #007bff;
+        }
+
+        &.disabled a {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .previous a,
+    .next a {
+        font-weight: bold;
+    }
+}
+
+.job-list-and-details {
+    display: flex;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    // padding: 10px;
+    // height: 50px;
+    // width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;  // Ensure content doesn't overflow the card boundaries
+    font-family: 'Canva Sans', sans-serif;
+
+}
+
+.job-list-window {
+    height: 80vh;           // Set a fixed height for the container (adjust as needed)
+    width: 50%;
+    // margin-bottom: 50px;
+    overflow-y: auto;        // Enables vertical scrolling when the content overflows
+    // padding: 10px;           // Optional padding inside the container for spacing
+    box-sizing: border-box;  // Ensures padding doesn't affect the element's dimensions
+    border: 1px;
+    border-color: #333;
+}
+
+.job-active-details {
+    width: 50%;
+    height: 80vh;           // Set a fixed height for the container (adjust as needed)
+    // margin-bottom: 50px;
+    overflow-y: auto;        // Enables vertical scrolling when the content overflows
+    // padding: 10px;           // Optional padding inside the container for spacing
+    box-sizing: border-box;  // Ensures padding doesn't affect the element's dimensions
+    border: 1px;
+    border-color: #333;
+}

@@ -1,10 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
-import './JobBoard.scss';
+import './ActiveJob.scss';
 
 function ActiveJob() {
   return (
-    <div></div>
+    <div className='ActiveJobView'>
+
+    </div>
   );
 }
 
