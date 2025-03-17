@@ -2,7 +2,7 @@
 
 .job-card {
     display: flex;
-    background-color: #fff;
+    background-color: #e6e6e6;
     border: 1px solid #ddd;
     margin: 0;  // Remove space between cards
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -11,7 +11,8 @@
   
     &:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.20);
+      background-color: #bfbfbf;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.20);
       cursor: pointer;
     }
 
@@ -70,6 +71,6 @@
   }
 
 .active-card {
-    background-color: #ddd;
+    background-color: #bfbfbf;
 }
   

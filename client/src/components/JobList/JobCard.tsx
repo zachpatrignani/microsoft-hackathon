@@ -6,12 +6,14 @@ import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate'; 
 import { Job } from '../../models/job';
 import './JobCard.scss';
-import { MouseEventHandler } from 'react';
+import { RootState } from '../../redux/store';
+import axios from 'axios';
 
 interface JobCardProps {
     jobObject: Job;
     onClick: (event: any) => void; // Define the onClick prop type
 }
+
 
 const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
 
@@ -41,6 +43,24 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
         }
     }
 
+    const [logo, setLogo] = useState<string>("/placeholder-logo.jpg")
+
+    const checkUrl = async () => {
+        const website = jobObject?.company.replace(" ", "");
+        const url = `https://logo.clearbit.com/${website}.com`;
+        try{
+            await axios.get(url);  
+            setLogo(url);
+        } 
+        catch{
+            setLogo("./placeholder-logo.jpg")
+        }
+    }
+
+    useEffect(() => {
+        checkUrl();
+    }, [jobObject.company]);
+
     const handleCardClick = (event: any) => {
         
         const allCards = document.querySelectorAll('.job-card');
@@ -59,7 +79,15 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
     return (
       <div className="job-card" onClick={handleCardClick}>
         <div className='job-card-logo-container'>
-            <img className="job-card-logo" src="/placeholder-logo.jpg" alt="Job Image" />
+            <img 
+            className="job-card-logo"
+            src={logo}
+            onError={(e)=>{
+                const target = e.currentTarget; // Get the image element
+                target.onerror = null; // Prevent infinite loop
+                target.src = "./placeholder-logo.jpg"; // Set fallback image
+            }}
+            alt="Job Image" />
         </div>
         <div className="job-card-content">
           <div className="job-title">{jobObject.name}</div>
