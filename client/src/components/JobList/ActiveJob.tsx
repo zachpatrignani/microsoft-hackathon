@@ -26,24 +26,24 @@ function ActiveJob() {
     }
   },[activeJobId])
 
-  const [logo, setLogo] = useState<string>("");
+  // const [logo, setLogo] = useState<string>("");
 
-  const checkUrl  = async () => {
-    const website = activeJobObject?.company.replace(" ","");
-    const url = `https://logo.clearbit.com/${website}.com`;
+  // const checkUrl  = async () => {
+  //   const website = activeJobObject?.company.replace(" ","");
+  //   const url = `https://logo.clearbit.com/${website}.com`;
 
-    try {
-      await axios.get(url);
-      setLogo(url);
-    }
-    catch{
-      setLogo("./placeholder-logo.jpg");
-    }
-  }
+  //   try {
+  //     await axios.get(url);
+  //     setLogo(url);
+  //   }
+  //   catch{
+  //     setLogo("./placeholder-logo.jpg");
+  //   }
+  // }
 
-  useEffect(()=>{
-    checkUrl();
-  },[activeJobId])
+  // useEffect(()=>{
+  //   checkUrl();
+  // },[activeJobId])
 
 
 
@@ -52,7 +52,7 @@ function ActiveJob() {
 
       <div className='header-container'>
         <div className="logo-container">
-          <img className="logo" src={logo} alt="" />
+          <img className="logo" src={`https://logo.clearbit.com/${activeJobObject?.company.replace(" ","")}.com`} alt="" />
         </div>
         <div className='main-title'>
           {activeJobObject?.name}

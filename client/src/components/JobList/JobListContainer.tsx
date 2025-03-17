@@ -34,6 +34,30 @@ const JobListContainer = () => {
     useEffect(() => {
         let newJobList = new Array<Job>;
 
+        const famousBusinesses = [
+            "McDonalds",
+            "Burger King",
+            "Wendys",
+            "Subway",
+            "Starbucks",
+            "KFC",
+            "Chick-fil-A",
+            "Taco Bell",
+            "Dominos Pizza",
+            "Pizza Hut",
+            "Chipotle",
+            "Dunkin",
+            "Five Guys",
+            "Panda Express",
+            "Olive Garden",
+            "Walmart",
+            "Target",
+            "Macys",
+            "Nordstrom",
+            "Best Buy"
+        ];
+    
+
         for (let i = 0 ; i < 150; ++i){
             const newJob : Job  = {
                 _id: `${i}`,
@@ -45,7 +69,7 @@ const JobListContainer = () => {
                 wage : 100000,
                 city : "Chicago",
                 state: "IL",
-                company: `Facebook`,
+                company: famousBusinesses[i%famousBusinesses.length],
                 employerPhone: "1234567890",
                 employerEmail:"employer@email.com",
                 industry:"Food",
