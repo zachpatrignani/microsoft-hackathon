@@ -1,36 +1,57 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface JobFilters {
+  salary?: number;
+  datePosted?: Date;
+  workType?: string;
+  search?: string;
+  isAiSearch: boolean;
+}
+
 // Define Interface
 export interface JobFiltersState {
-    salary?: number,
-    datePosted?: Date,
-    workType?: string
+  filters: JobFilters;
 }
 
 // Define initial state
 export const initialState: JobFiltersState = {
+  filters: {
     salary: undefined,
     datePosted: undefined,
-    workType: undefined
+    workType: undefined,
+    search: undefined,
+    isAiSearch: false,
+  },
 };
 
 // Define slice
 const jobFiltersSlice = createSlice({
-    name : "jobList",
-    initialState,
-    reducers: {
-        setSalary(state, action) {
-            state.salary = action.payload;
-        },
-        setDatePosted(state, action) {
-            state.datePosted = action.payload;
-        },
-        setWorkType(state, action) {
-            state.workType = action.payload;
-        }
-    }
-
+  name: "jobList",
+  initialState,
+  reducers: {
+    setSalary(state, action) {
+      state.filters.salary = action.payload;
+    },
+    setDatePosted(state, action) {
+      state.filters.datePosted = action.payload;
+    },
+    setWorkType(state, action) {
+      state.filters.workType = action.payload;
+    },
+    setSearch(state, action) {
+      state.filters.search = action.payload;
+    },
+    setIsAiSearch(state, action) {
+      state.filters.isAiSearch = action.payload;
+    },
+  },
 });
 
-export const {setSalary, setDatePosted, setWorkType} = jobFiltersSlice.actions;
+export const {
+  setSalary,
+  setDatePosted,
+  setWorkType,
+  setSearch,
+  setIsAiSearch,
+} = jobFiltersSlice.actions;
 export default jobFiltersSlice.reducer;
