@@ -1,55 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Canva+Sans:wght@400;600;700&display=swap');
 
-.pagination-wrapper {
+
+.footer {
     display: flex;
-    justify-content: center; /* Centers the pagination horizontally */
-    align-items: center;  /* Optionally, if you want to vertically align items (useful for tall containers) */
-    width: 100%; /* Ensures it takes the full width of the container */
-    margin-top: 1rem; /* Adds some space above */
+    justify-content: space-between; /* Pushes pagination left & button right */
+    align-items: center; /* Centers vertically */
+    width: 100%;
+    padding: 0px 0px;
 }
 
+/* Pagination aligned to the left */
 .pagination {
     display: flex;
     list-style: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-        margin-top: 5px;
-        // margin: 0 0px;
-
-        a {
-            display: block;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            text-decoration: none;
-            color: #333;
-            transition: background 0.3s ease, color 0.3s ease;
-
-            &:hover {
-                background: #f0f0f0;
-            }
-        }
-
-        &.active a {
-            background: #007bff;
-            color: #fff;
-            font-weight: bold;
-            border-color: #007bff;
-        }
-
-        &.disabled a {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-    }
-
-    .previous a,
-    .next a {
-        font-weight: bold;
-    }
+    padding-left: 20px;
 }
+
+.pagination li {
+    // margin: 0 0px;
+}
+
+.pagination a {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+    background: #f0f0f0;
+    cursor: pointer;
+}
+
+.pagination .active a {
+    background: #b474d6;
+    color: white;
+    font-weight: bold;
+    border-color: #b474d6;
+}
+
+.pagination .disabled a {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Export button container aligned to the right */
+.export-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between button & clear text */
+    margin-right: 20px;
+}
+
+/* Export button */
+.export-button-container button {
+    background-color: #b474d6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    height: 40px;
+}
+
+.export-button-container button:hover {
+    background-color: #9b50c1;
+    transform: translateY(-2px);
+}
+
+.export-button-container button:active {
+    background-color: #7d3ba6;
+    transform: translateY(0);
+}
+
+.export-button-container button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Clear Selections: Underlined and aligned to the right */
+.clear-selections {
+    color: #4f518c;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.clear-selections:hover {
+    color: #333;
+}
+
 
 .job-list-and-details {
     display: flex;
@@ -66,7 +115,7 @@
 }
 
 .job-list-window {
-    height: 80vh;           // Set a fixed height for the container (adjust as needed)
+    height: 75vh;           // Set a fixed height for the container (adjust as needed)
     width: 50%;
     // margin-bottom: 50px;
     overflow-y: auto;        // Enables vertical scrolling when the content overflows
@@ -78,7 +127,7 @@
 
 .job-active-details {
     width: 50%;
-    height: 80vh;           // Set a fixed height for the container (adjust as needed)
+    height: 75vh;           // Set a fixed height for the container (adjust as needed)
     // margin-bottom: 50px;
     overflow-y: auto;        // Enables vertical scrolling when the content overflows
     // padding: 10px;           // Optional padding inside the container for spacing
@@ -86,3 +135,5 @@
     border: 1px;
     border-color: #333;
 }
+
+

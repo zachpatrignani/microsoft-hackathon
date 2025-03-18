@@ -96,7 +96,7 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
     useEffect(() => {
         setCheckBoxState(exportMap.has(jobObject._id));
         console.log("maheer", exportMap);
-    }, [currentPage, jobObject]);
+    }, [currentPage, jobObject, exportMap]);
 
     return (
       <div className="job-card" onClick={handleCardClick}>

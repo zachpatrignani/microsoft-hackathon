@@ -24,9 +24,14 @@ const exportSlice = createSlice({
             if (state.allSelectedJobs.has(action.payload)) {
                 state.allSelectedJobs.delete(action.payload);
             }
+        },
+
+        clearJobs(state) {
+
+            state.allSelectedJobs.clear();
         }
     }
 });
 
-export const {addJob, removeJob} = exportSlice.actions;
+export const {addJob, removeJob, clearJobs} = exportSlice.actions;
 export default exportSlice.reducer;

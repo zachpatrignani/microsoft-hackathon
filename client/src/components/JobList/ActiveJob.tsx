@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { Job } from '../../models/job';
+import JobNotesGenerator from './JobNotesGenerator'
 import axios from 'axios';
 
 
@@ -36,10 +37,8 @@ function ActiveJob() {
         <div className='main-title'>
           {activeJobObject?.name}
         </div>
+        <JobNotesGenerator/>
         <div>
-        </div>
-        <div className='export-button-container'>
-          <button>export</button>
         </div>
       </div>
 
@@ -59,21 +58,25 @@ function ActiveJob() {
       </div>
       
       {(matchNotesAvailable && 
-        <div className='job-details-container match'>
-          <div className='secondary-title'> Matching Strengths:</div>
-          <div>TThis is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description</div>
+        <div className='job-details-container'>
+          <div className='colored-container match'>
+            <div className='secondary-title'> Matching Strengths:</div>
+            <div>TThis is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description</div>
+          </div>
         </div>
-      )};
+      )}
 
       {(challengeNotesAvailable && 
-        <div className='job-details-container challenge'>
-          <div className='secondary-title'> Potential Challenges:</div>
-          <div>TThis is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description</div>
+        <div className='job-details-container'>
+          <div className='colored-container challenge'>
+            <div className='secondary-title'> Potential Challenges:</div>
+            <div>TThis is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description</div>
+          </div>
         </div>
-      )};
+      )}
 
       <div className='job-details-container'>
-        <div className='secondary-title'>About</div>
+        <div className='secondary-title'>Job Description</div>
         <div className="job-description">{activeJobObject?.description}</div>
 
       </div>
