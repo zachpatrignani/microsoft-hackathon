@@ -67,6 +67,30 @@
         font-size: .75rem;
         color: #555;
     }
+
+
+    
+    .select-checkbox input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin: 5px;
+        
+        // margin-right: 10px; /* Space between checkbox and label */
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .select-checkbox input[type="checkbox"]:checked {
+        background-color: #4CAF50; /* Green background for checked state */
+        border-color: #4CAF50;
+    }
+    
+    .select-checkbox input[type="checkbox"]:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */
+    }
+    
+    
   
   }
 

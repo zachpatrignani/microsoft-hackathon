@@ -31,37 +31,6 @@
       font-weight: bold;
       
     }
-
-    .export-button-container {
-        position: relative; // Ensures it acts as the positioning reference for the button
-        width: 30%; // Ensures it spans the container width
-    
-        button {
-            position: absolute;
-            top: 15px;  // Adjust spacing from the top
-            right: 15px; // Adjust spacing from the right
-            background-color: #007bff; // Primary blue color
-            color: #fff; // White text
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            text-transform: uppercase;
-    
-            &:hover {
-                background-color: #0056b3; // Darker blue for hover
-                transform: translateY(-2px); // Slight lift effect
-            }
-    
-            &:active {
-                background-color: #004494; // Even darker for active press
-                transform: translateY(0px);
-            }
-        }
-    }
     
 }
 
@@ -122,6 +91,7 @@
 }
 
 .match {
+    border-radius: 5px;
     background-color: #B2fba5;
     color: green;
     padding: 20px;
@@ -129,55 +99,10 @@
 }
 
 .challenge {
+    border-radius: 5px;
     background-color: #ff746c;
     color: darkred;
     padding: 20px;
     padding-left: 20px;
 }
-  
-//     .job-card-content {
-//       display: flex;
-//       flex-direction: column;
-//       height: 100%;
-//       padding: 10px;
-    
-//     }
-  
-//     .job-title {
-//       font-size: 1.2rem;
-//       font-weight: bold;
-//       color: #333;
-//     }
-  
-//     .job-location {
-//       font-size: .75rem;
-//       color: #555;
-//     }
-
-//     .job-salary-date-container {
-//         align-self: flex-start; // Moves it to the top
-//         margin-left: auto; // Pushes it to the right
-//         // font-weight: bold;
-//         padding: 10px;
-//         padding-right: 20px;
-//         text-align: right;
-//       }
-    
-  
-//     .job-card-salary {
-//         font-weight: bold;
-//         color: #333;
-//         font-size: 0.85rem;
-//       }
-
-//     .job-card-date-posted {
-//         font-size: .75rem;
-//         color: #555;
-//     }
-  
-//   }
-
-// .active-card {
-//     background-color: #ddd;
-
-  
+ 
