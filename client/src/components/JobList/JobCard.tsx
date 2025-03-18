@@ -2,11 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './JobListContainer.scss';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate'; 
 import { Job } from '../../models/job';
 import './JobCard.scss';
 import { RootState } from '../../redux/store';
+import { addJob, removeJob } from '../../redux/ExportSlice/exportSlice';
 import axios from 'axios';
 
 interface JobCardProps {
@@ -61,6 +62,7 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
         checkUrl();
     }, [jobObject.company]);
 
+
     const handleCardClick = (event: any) => {
         
         const allCards = document.querySelectorAll('.job-card');
@@ -75,7 +77,27 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
         onClick(jobObject);
         };
 
-    
+    const dispatch = useDispatch();
+    const exportMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
+    const currentPage = useSelector((state: RootState) => state.jobList.currentPage);
+    const [checkBoxState, setCheckBoxState] = useState<boolean>(exportMap.has(jobObject._id));
+
+    const onCheckBoxChange = (event : any) => {
+        if (event.target.checked) {
+            setCheckBoxState(true);
+            dispatch(addJob(jobObject));
+        }
+        else {
+            setCheckBoxState(false);
+            dispatch(removeJob(jobObject._id));
+        }
+    }
+
+    useEffect(() => {
+        setCheckBoxState(exportMap.has(jobObject._id));
+        console.log("maheer", exportMap);
+    }, [currentPage, jobObject]);
+
     return (
       <div className="job-card" onClick={handleCardClick}>
         <div className='job-card-logo-container'>
@@ -97,6 +119,9 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
         <div className='job-salary-date-container'>
             <div className='job-card-salary'>${jobObject.wage}/year</div>
             <div className='job-card-date-posted'>posted {getHowManyDaysSincePost(jobObject._createdAt)}</div>
+            <div className= "select-checkbox">
+                <input type="checkbox" checked={checkBoxState} onChange={(e)=>{onCheckBoxChange(e)}} ></input>
+            </div>
         </div>
       </div>
     );

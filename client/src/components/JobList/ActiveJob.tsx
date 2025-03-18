@@ -26,27 +26,6 @@ function ActiveJob() {
     }
   },[activeJobId])
 
-  // const [logo, setLogo] = useState<string>("");
-
-  // const checkUrl  = async () => {
-  //   const website = activeJobObject?.company.replace(" ","");
-  //   const url = `https://logo.clearbit.com/${website}.com`;
-
-  //   try {
-  //     await axios.get(url);
-  //     setLogo(url);
-  //   }
-  //   catch{
-  //     setLogo("./placeholder-logo.jpg");
-  //   }
-  // }
-
-  // useEffect(()=>{
-  //   checkUrl();
-  // },[activeJobId])
-
-
-
   return (
     <div className='ActiveJobView'>
 
@@ -56,6 +35,8 @@ function ActiveJob() {
         </div>
         <div className='main-title'>
           {activeJobObject?.name}
+        </div>
+        <div>
         </div>
         <div className='export-button-container'>
           <button>export</button>
