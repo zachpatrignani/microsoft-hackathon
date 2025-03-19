@@ -10,6 +10,7 @@ import { setJobList, setActiveJobId, setCurrentPage } from '../../redux/JobListS
 import { RootState } from '../../redux/store';
 import ActiveJob from './ActiveJob';
 import { clearJobs } from '../../redux/ExportSlice/exportSlice';
+import { getJobs } from '../../services/jobServices';
 
 
 const JobListContainer = () => {
@@ -34,62 +35,14 @@ const JobListContainer = () => {
     
     const offset = currentPage * itemsPerPage;
 
-    useEffect(() => {
-        let newJobList = new Array<Job>;
 
-        const famousBusinesses = [
-            "McDonalds",
-            "Burger King",
-            "Wendys",
-            "Subway",
-            "Starbucks",
-            "KFC",
-            "Chick-fil-A",
-            "Taco Bell",
-            "Dominos Pizza",
-            "Pizza Hut",
-            "Chipotle",
-            "Dunkin",
-            "Five Guys",
-            "Panda Express",
-            "Olive Garden",
-            "Walmart",
-            "Target",
-            "Macys",
-            "Nordstrom",
-            "Best Buy"
-        ];
-    
+    const populatingJobRedux = async () => {
+        const jobs : any = await getJobs(300);
+        dispatch(setJobList(jobs.data.data));
+    }
 
-        for (let i = 0 ; i < 150; ++i){
-            const newJob : Job  = {
-                _id: `${i}`,
-                employerId: `${i}`,
-                employmentType: "Part-Time",
-                name : `Job number ${i}`,
-                _createdAt : new Date().toISOString(),
-                workType : "Remote",
-                wage : 100000,
-                city : "Chicago",
-                state: "IL",
-                company: famousBusinesses[i%famousBusinesses.length],
-                employerPhone: "1234567890",
-                employerEmail:"employer@email.com",
-                industry:"Food",
-                description: `This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description.
-
-                This is the employer submitted job description. 
-                This is the employer submitted job description. 
-                This is the employer submitted job description. 
-                
-                This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. `
-            }
-            
-            newJobList.push(newJob);
-        } 
-        
-        dispatch(setJobList(newJobList));
-        
+    useEffect(()=>{
+        populatingJobRedux();
     },[]);
 
     useEffect(()=> {
@@ -105,6 +58,10 @@ const JobListContainer = () => {
     const clearSelections = () => {
         dispatch(clearJobs());
     }
+
+    useEffect(()=>{
+        dispatch(setActiveJobId(items[0]?._id))
+    }, [items]);
 
 
     return (

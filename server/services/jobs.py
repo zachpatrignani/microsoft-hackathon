@@ -1,6 +1,8 @@
 
 from models.jobs_model import  JobWorkType, JobEmploymentType
 from datetime import datetime
+import dal.queries
+from flask import jsonify
 
 def get_all_jobs():
     return {
@@ -15,3 +17,15 @@ def get_all_jobs():
         'workType': JobWorkType.REMOTE,
         'employerId': '12345'
     }
+
+
+def get_jobs_with_limit(limit):
+
+    jobObject =  dal.queries.get_jobs_with_limit(limit)
+    for job in jobObject:
+        job['_id'] = str(job['_id'])
+
+    return jobObject
+    
+
+

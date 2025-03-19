@@ -1,4 +1,4 @@
-from db import jobs_collection, employer_collection, coach_collection, clients_collection
+from dal.db import jobs_collection, users_collection, coach_collection, clients_collection
 
 # Generic Queries
 
@@ -7,6 +7,10 @@ from db import jobs_collection, employer_collection, coach_collection, clients_c
 def get_all_jobs():
     """Fetch all jobs from the jobs collection."""
     return list(jobs_collection.find())
+
+def get_jobs_with_limit(limit):
+    """Fetch the first 10 jobs from the jobs collection."""
+    return list(jobs_collection.find().limit(limit))
 
 def add_job(job_data):
     """Insert a new job into the jobs collection."""
