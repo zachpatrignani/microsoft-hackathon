@@ -88,7 +88,6 @@ function AddJobForm() {
         <div className="AddJobForm">
             <h1>Add a New Job</h1>
             <form onSubmit={handleSubmit}>
-            <h2>Company Information</h2>
             <h2>Job Information</h2>
             
             <div className="form-group">
