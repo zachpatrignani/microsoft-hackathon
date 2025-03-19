@@ -4,6 +4,7 @@ interface JobFilters {
   salary?: number;
   datePosted?: Date;
   workType?: string;
+  employmentType?: string;
   search?: string;
   isAiSearch: boolean;
 }
@@ -19,6 +20,7 @@ export const initialState: JobFiltersState = {
     salary: undefined,
     datePosted: undefined,
     workType: undefined,
+    employmentType: undefined,
     search: undefined,
     isAiSearch: false,
   },
@@ -44,6 +46,9 @@ const jobFiltersSlice = createSlice({
     setIsAiSearch(state, action) {
       state.filters.isAiSearch = action.payload;
     },
+    setEmploymentType(state, action) {
+      state.filters.employmentType = action.payload;
+    },
   },
 });
 
@@ -53,5 +58,6 @@ export const {
   setWorkType,
   setSearch,
   setIsAiSearch,
+  setEmploymentType
 } = jobFiltersSlice.actions;
 export default jobFiltersSlice.reducer;
