@@ -12,6 +12,10 @@ import ActiveJob from './ActiveJob';
 import { clearJobs } from '../../redux/ExportSlice/exportSlice';
 import { getJobs } from '../../services/jobServices';
 
+import ReactMarkdown from "react-markdown";
+import { jsPDF } from "jspdf";
+import { createPage } from '../../services/exportService';
+
 
 const JobListContainer = () => {
     const itemsPerPage = 10;
@@ -63,6 +67,29 @@ const JobListContainer = () => {
         dispatch(setActiveJobId(items[0]?._id))
     }, [items]);
 
+    
+    
+    
+    const exportPdf = () => {
+        // Create a new jsPDF instance
+        const doc = new jsPDF();
+
+        // Process the markdown content
+        
+        allJobs.forEach((section, index) => {
+        if (index > 0) {
+            doc.addPage(); // Add a new page for subsequent sections
+        }
+        
+        // Render the content on the current page (ReactMarkdown will convert markdown to HTML)
+        const htmlContent = <ReactMarkdown children={createPage(section)} />;
+
+        console.log("maheer", htmlContent);
+        
+        
+        });
+    }
+
 
     return (
         <div>
@@ -97,7 +124,7 @@ const JobListContainer = () => {
 
             <div className='export-button-container'>
                 <div className='clear-selections' onClick={clearSelections}>Clear</div>
-                <button disabled={selectedPageMap.size <= 0}>export{selectedPageMap.size > 0 ? ` (${selectedPageMap.size})` : ""}</button>
+                <button disabled={selectedPageMap.size <= 0} onClick={exportPdf}>export{selectedPageMap.size > 0 ? ` (${selectedPageMap.size})` : ""}</button>
             </div>
             
             
