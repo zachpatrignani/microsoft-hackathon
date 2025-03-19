@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import  { store }  from './redux/store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/global.scss';
+import Navbar from './components/Navbar/Navbar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,6 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <BrowserRouter>
+    <Navbar />
       <Routes>
         <Route path="/" element={<JobBoard />} />
         <Route path="/add-job" element={<AddJob />} />

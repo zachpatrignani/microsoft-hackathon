@@ -14,9 +14,9 @@ function AddJobForm() {
         employmentType: '',
         wage: '',
         workType: '',
+        employerPhone: '',
+        employerEmail: '',
         website: '',
-        email: '',
-        phone: '',
     });
 
     const formatPhoneNumber = (value: string) => {
@@ -47,7 +47,7 @@ function AddJobForm() {
         const formattedPhone = formatPhoneNumber(value);
         setFormData({
             ...formData,
-            phone: formattedPhone,
+            employerPhone: formattedPhone,
         });
     };
 
@@ -303,7 +303,7 @@ function AddJobForm() {
                         type="email"
                         id="email"
                         name="email"
-                        value={formData.email}
+                        value={formData.employerEmail}
                         onChange={handleChange}
                         placeholder="Enter contact email"
                         required
@@ -315,7 +315,7 @@ function AddJobForm() {
                         type="text"
                         id="phone"
                         name="phone"
-                        value={formData.phone}
+                        value={formData.employerPhone}
                         onChange={handlePhoneChange}
                         placeholder="Enter contact phone number"
                         required
