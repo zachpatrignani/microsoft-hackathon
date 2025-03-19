@@ -1,10 +1,10 @@
-export type JobWorkType = "Remote" | "On-Site" | "Hybrid";
-export type JobEmploymentType = "Part-Time" | "Full-Time" | "Contract";
+export type JobWorkType = "Remote" | "Hybrid" | "In-Person";
+export type JobEmploymentType = "Part-Time" | "Full-Time" | "Contract" | "Intern" | "Temporary" ;
 
 export interface Job {
   _id: string;
   name?: string;
-  company: string;
+  company?: string;
   industry?: string;
   description?: string;
   skills?: string;

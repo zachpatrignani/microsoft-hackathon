@@ -20,7 +20,6 @@ function ActiveJob() {
   const [activeJobObject, setActiveJobObject] = useState<Job>(allJobs[0]);
   
   useEffect(()=>{
-    console.log("hit");
     const foundJob = allJobs.find((job) => job._id === activeJobId);
     if (foundJob !== undefined) {
       setActiveJobObject(foundJob);
@@ -32,7 +31,7 @@ function ActiveJob() {
 
       <div className='header-container'>
         <div className="logo-container">
-          <img className="logo" src={`https://logo.clearbit.com/${activeJobObject?.company.replace(" ","")}.com`} alt="" />
+          <img className="logo" src={`https://logo.clearbit.com/${activeJobObject?.website}`} alt="" />
         </div>
         <div className='main-title'>
           {activeJobObject?.name}

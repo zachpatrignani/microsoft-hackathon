@@ -47,8 +47,8 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
     const [logo, setLogo] = useState<string>("/placeholder-logo.jpg")
 
     const checkUrl = async () => {
-        const website = jobObject?.company.replace(" ", "");
-        const url = `https://logo.clearbit.com/${website}.com`;
+        const website = jobObject?.website;
+        const url = `https://logo.clearbit.com/${website}`;
         try{
             await axios.get(url);  
             setLogo(url);
