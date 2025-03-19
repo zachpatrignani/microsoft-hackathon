@@ -13,11 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<JobBoard />} />
-    <Route path="/add-job" element={<AddJob />} />
-    </Routes>
-    </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<JobBoard />} />
+        <Route path="/add-job" element={<AddJob />} />
+      </Routes>
+      </BrowserRouter>
   </Provider>,
 );
 
