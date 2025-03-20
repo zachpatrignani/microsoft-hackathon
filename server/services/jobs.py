@@ -2,21 +2,20 @@
 from models.jobs_model import  JobWorkType, JobEmploymentType
 from datetime import datetime
 import dal.queries
-from flask import jsonify
+import json
 
-def get_all_jobs():
-    return {
-        'name': 'test_job',
-        'industry': 'industry',
-        'tags' : ['tag1', 'tag2'],
-        'description': 'description',
-        'location': 'Michigan',
-        '_createdAt': str(datetime.now()),
-        'employmentType': JobEmploymentType.FULL_TIME,
-        'wage': 100000.0,
-        'workType': JobWorkType.REMOTE,
-        'employerId': '12345'
-    }
+def get_all_jobs(query):
+    converted_query = {}
+    converted_query['limit'] = int(query.get('limit', 30))
+    converted_query['page'] = int(query.get('page', 1))
+    converted_query['filters'] = json.loads(query.get('filters', '{}')) or {}
+    print(converted_query)
+    jobs = dal.queries.get_all_jobs(converted_query)
+    for job in jobs:
+        job['_id'] = str(job['_id'])
+    print(jobs)
+    return jobs
+
 
 
 def get_jobs_with_limit(limit):

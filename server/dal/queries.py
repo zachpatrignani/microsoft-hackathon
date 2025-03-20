@@ -4,9 +4,10 @@ from dal.db import jobs_collection, users_collection, coach_collection, clients_
 
 # Job Queries --------------
 
-def get_all_jobs():
-    """Fetch all jobs from the jobs collection."""
-    return list(jobs_collection.find())
+def get_all_jobs(converted_query: dict):
+    return list(jobs_collection.find(converted_query['filters'])
+                .skip((converted_query['page'] - 1) * converted_query['limit'])
+                .limit(converted_query['limit']))
 
 def get_jobs_with_limit(limit):
     """Fetch the first 10 jobs from the jobs collection."""
