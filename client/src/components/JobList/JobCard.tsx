@@ -33,7 +33,8 @@ const JobCard: React.FC<JobCardProps> = ({ jobObject, onClick }) => {
         else if (diffDays > 30) {
             return `${postedDate.toLocaleDateString('en-US', {
                 month: 'long',  // 'short' for abbreviated month (e.g., "Mar")
-                day: 'numeric'  // Numeric day (e.g., 16)
+                day: 'numeric',  // Numeric day (e.g., 16)
+                year: 'numeric'
               })}`
         }
         else if (diffDays > 1) {

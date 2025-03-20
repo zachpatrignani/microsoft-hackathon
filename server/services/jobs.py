@@ -24,6 +24,8 @@ def get_jobs_with_limit(limit):
     for job in jobObject:
         job['_id'] = str(job['_id'])
 
+    print(jobObject)
+    
     return jobObject
     
 
