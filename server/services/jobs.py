@@ -35,3 +35,5 @@ def add_job(data):
         jobs.append(new_job)
 
         return jsonify({'message': 'Job added successfully', 'job': new_job}), 201
+
+        # return jobs.add_job(new_job).inserted_id

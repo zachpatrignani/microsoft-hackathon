@@ -1,29 +1,15 @@
+import { Job } from '../../models/job';
 import './AddJobForm.scss';
 import React, { useState } from 'react';
 
 function AddJobForm() {
-    const [formData, setFormData] = useState({
-        name: '',
-        company: '',
-        industry: '',
-        description: '',
-        skills: '',
-        responsibilities: '',
-        city: '',
-        state: '',
-        employmentType: '',
-        wage: '',
-        workType: '',
-        employerPhone: '',
-        employerEmail: '',
-        website: '',
-    });
+    const [formData, setFormData] = useState<Partial<Job>>({});
 
     const formatPhoneNumber = (value: string) => {
         // Remove all non-numeric characters
         const cleaned = value.replace(/\D/g, '');
 
-        // Format the number as (123) - 123-12345
+        // Format the number as (123)-123-12345
         const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,5})$/);
         if (!match) return value;
 
@@ -116,16 +102,16 @@ function AddJobForm() {
                         />
                     </div>
                     <div className="form-group">
-                            <label htmlFor="website">Company Website</label>
-                            <input
-                            type="url"
-                            id="website"
-                            name="website"
-                            value={formData.website}
-                            onChange={handleChange}
-                            placeholder="Enter company website"
-                            required
-                            />
+                        <label htmlFor="website">Company Website</label>
+                        <input
+                        type="url"
+                        id="website"
+                        name="website"
+                        value={formData.website}
+                        onChange={handleChange}
+                        placeholder="Enter company website"
+                        required
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="industry">Industry</label>

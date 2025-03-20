@@ -17,12 +17,6 @@ def add_job():
     try:
         data = request.get_json()
 
-        required_fields = ['name', 'company', 'industry', 'description', 'skills', 'responsibilities', 'city', 'state', 'employmentType', 'wage', 'workType', 'website', 'email', 'phone']
-
-        for field in required_fields:
-            if field not in data:
-                return jsonify({'error': f'Missing required field: {field}'}), 400
-
         return response.success(jobs.add_job(data))
 
     except Exception as e:
