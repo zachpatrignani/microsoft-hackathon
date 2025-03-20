@@ -1,18 +1,33 @@
+
 import React from 'react';
 import './JobListContainer.scss';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Job } from '../../models/job';
+import { Note } from '../../models/note';
 import './JobNotesGenerator.scss';
+import { getNotes } from '../../services/noteService';
+
+import { addNote } from '../../redux/NoteSlice/noteSlice';
+import { RootState } from '../../redux/store';
 
 
 interface textInput {
     preferenceText?: string,
     impairmentText?: string
+};
+
+interface JobNotesGeneratorProps {
+    jobId : string | undefined;
 }
 
 
-const JobNotesGenerator: React.FC = () => {
+
+const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobId}) => {
+
+    const dispatch = useDispatch();
+
+    const notesMap = useSelector((state: RootState) => state.noteSlice.allGeneratedNotes)
 
 
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -32,8 +47,17 @@ const JobNotesGenerator: React.FC = () => {
         setShowModal(true);
     }
 
-    const handleGenerateClick = () => {
-        setShowModal(false);
+    const handleGenerateClick = async () => {
+        const preferences = textInput.preferenceText === undefined ? "" : textInput.preferenceText;
+        const impairments = textInput.impairmentText === undefined ? "" : textInput.impairmentText;
+
+        console.log("maheer", preferences, impairments)
+        if (jobId !== undefined){
+            const fetchedNotes : Note = await getNotes(jobId, preferences, impairments);
+            console.log("maheer3",fetchedNotes)
+            dispatch(addNote(fetchedNotes));
+            setShowModal(false);
+        }
     }
 
     const handleCancelClick = () => {
