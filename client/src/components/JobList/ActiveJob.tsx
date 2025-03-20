@@ -112,9 +112,11 @@ function ActiveJob() {
         <div className='job-details-container'>
           <div className='colored-container match'>
             <div className='secondary-title'> Matching Strengths:</div>
-            {matchBlurb.map((blurb, index) => (
-              <li key={index}>{blurb}</li>
-            ))}
+            <ul className="fancy-list">
+              {matchBlurb.map((blurb, index) => (
+                <li key={index}>{blurb}</li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
@@ -123,9 +125,11 @@ function ActiveJob() {
         <div className='job-details-container'>
           <div className='colored-container challenge'>
             <div className='secondary-title'> Potential Challenges:</div>
-            {challengeBlurb.map((blurb, index) => (
-              <li key={index}>{blurb}</li>
-            ))}
+            <ul className="fancy-list">
+              {challengeBlurb.map((blurb, index) => (
+                <li key={index}>{blurb}</li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
