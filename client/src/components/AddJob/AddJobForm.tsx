@@ -3,7 +3,22 @@ import './AddJobForm.scss';
 import React, { useState } from 'react';
 
 function AddJobForm() {
-    const [formData, setFormData] = useState<Partial<Job>>({});
+    const [formData, setFormData] = useState({
+        name: '',
+        company: '',
+        industry: '',
+        description: '',
+        skills: '',
+        responsibilities: '',
+        city: '',
+        state: '',
+        employmentType: '',
+        wage: '',
+        workType: '',
+        employerPhone: '',
+        employerEmail: '',
+        website: '',
+    });
 
     const formatPhoneNumber = (value: string) => {
         // Remove all non-numeric characters
@@ -47,6 +62,7 @@ function AddJobForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log(formData)
         try {
         const response = await fetch('http://localhost:8000/server/api/jobs', {
         method: 'POST',
@@ -284,11 +300,11 @@ function AddJobForm() {
                     </div>
                     <h2>Contact Information</h2>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="employerEmail">Email</label>
                         <input
-                        type="email"
-                        id="email"
-                        name="email"
+                        type="employerEmail"
+                        id="employerEmail"
+                        name="employerEmail"
                         value={formData.employerEmail}
                         onChange={handleChange}
                         placeholder="Enter contact email"
@@ -298,9 +314,9 @@ function AddJobForm() {
                     <div className="form-group">
                         <label htmlFor="phone">Phone Number</label>
                         <input
-                        type="text"
-                        id="phone"
-                        name="phone"
+                        type="employerPhone"
+                        id="employerPhone"
+                        name="employerPhone"
                         value={formData.employerPhone}
                         onChange={handlePhoneChange}
                         placeholder="Enter contact phone number"

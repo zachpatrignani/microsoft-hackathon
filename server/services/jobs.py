@@ -3,6 +3,7 @@ from models.jobs_model import  JobWorkType, JobEmploymentType
 from datetime import datetime
 import dal.queries
 import json
+from dal import queries
 
 def get_all_jobs(query):
     converted_query = {}
@@ -28,25 +29,23 @@ def get_jobs_with_limit(limit):
     
     return jobObject
     
-
-
-
 def add_job(data):
         new_job = {
             'name': data['name'],
+            'company': data['company'],
             'industry': data['industry'],
-            'tags': data.get('tags', []),
             'description': data['description'],
-            'location': data['location'],
-            '_createdAt': str(datetime.now()),
+            'description': data['description'],
+            'skills': data['skills'],
+            'responsibilities': data['responsibilities'],
+            'city': data['city'],
+            'state': data['state'],
             'employmentType': data['employmentType'],
             'wage': data['wage'],
             'workType': data['workType'],
-            'employerId': data['employerId']
+            'employerPhone': data['employerPhone'],
+            'employerEmail': data['employerEmail'],
+            'website': data['website']
         }
-
-        jobs.append(new_job)
-
-        return jsonify({'message': 'Job added successfully', 'job': new_job}), 201
-
-        # return jobs.add_job(new_job).inserted_id
+  
+        return queries.add_job(new_job)
