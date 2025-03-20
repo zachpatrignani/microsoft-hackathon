@@ -28,7 +28,7 @@ const JobListContainer = () => {
     const allJobs = useSelector((state: RootState ) => state.jobList.allJobs);
     const activeJobId = useSelector((state: RootState ) => state.jobList.activeJobId);
     const jobFilters = useSelector((state: RootState) => state.jobFilters.filters);
-    const [items,setItems] = useState([...allJobs.slice(0,itemsPerPage)]);
+    // const [items,setItems] = useState([...allJobs.slice(0,itemsPerPage)]);
     const currentPage = useSelector((state: RootState) => state.jobList.currentPage);
     
     const selectedPageMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
@@ -41,26 +41,36 @@ const JobListContainer = () => {
         dispatch(setActiveJobId(jobObject._id));
     };
     
-    const offset = currentPage * itemsPerPage;
+    // const offset = currentPage * itemsPerPage;
 
 
     const populatingJobRedux = async () => {
-        const jobs : any = await getJobs(currentPage, itemsPerPage, jobFilters);
+        const jobs : any = await getJobs(currentPage+1, itemsPerPage, jobFilters);
+        const allCards = document.querySelectorAll('.job-card');
+        
         dispatch(setJobList(jobs.data.data));
+        
+
+        if (allCards[0] !== undefined) {
+            allCards.forEach((card) => {
+                card.classList.remove('active-card');
+            });
+            allCards[0].classList.add('active-card');
+
+        }
     }
 
     useEffect(()=>{
         populatingJobRedux();
     },[jobFilters, currentPage]);
 
-    useEffect(()=> {
+    // useEffect(()=> {
         
-        setItems([...allJobs.slice((offset), (offset)+itemsPerPage)]);
-        const allCards = document.querySelectorAll('.job-card');
-        allCards.forEach((card) => {
-            card.classList.remove('active-card');
-        });
-    }, [currentPage, allJobs]);
+    //     // setItems([...allJobs.slice((offset), (offset)+itemsPerPage)]);
+        
+
+        
+    // }, [currentPage, allJobs, jobFilters]);
 
 
     const clearSelections = () => {
@@ -68,8 +78,8 @@ const JobListContainer = () => {
     }
 
     useEffect(()=>{
-        dispatch(setActiveJobId(items[0]?._id))
-    }, [items]);
+        dispatch(setActiveJobId(allJobs[0]?._id))
+    }, [allJobs]);
 
     
     const exportMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
@@ -131,7 +141,7 @@ const JobListContainer = () => {
         <div>
         <div className='job-list-and-details'>
             <div className='job-list-window'>
-                {items.map((currentJob : Job, index: number) => (
+                {allJobs.map((currentJob : Job, index: number) => (
                     <JobCard 
                         jobObject={currentJob}
                         onClick={()=>{handleCardClick(currentJob)}}
@@ -149,7 +159,7 @@ const JobListContainer = () => {
                 previousLabel={"← Previous"}
                 nextLabel={"Next →"}
                 breakLabel={"..."}
-                pageCount={Math.ceil(allJobs.length / itemsPerPage)}
+                pageCount={currentPage + 5}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={2}
                 onPageChange={handlePageClick}
