@@ -2,11 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface JobFilters {
   wage?: number;
-  _createdAt?: Date;
+  _createdAt?: string;
   workType?: string;
   employmentType?: string;
   search?: string;
-  isAiSearch: boolean;
 }
 
 // Define Interface
@@ -22,7 +21,6 @@ export const initialState: JobFiltersState = {
     workType: undefined,
     employmentType: undefined,
     search: undefined,
-    isAiSearch: false,
   },
 };
 
@@ -43,9 +41,6 @@ const jobFiltersSlice = createSlice({
     setSearch(state, action) {
       state.filters.search = action.payload;
     },
-    setIsAiSearch(state, action) {
-      state.filters.isAiSearch = action.payload;
-    },
     setEmploymentType(state, action) {
       state.filters.employmentType = action.payload;
     },
@@ -57,7 +52,6 @@ export const {
   setDatePosted,
   setWorkType,
   setSearch,
-  setIsAiSearch,
   setEmploymentType
 } = jobFiltersSlice.actions;
 export default jobFiltersSlice.reducer;

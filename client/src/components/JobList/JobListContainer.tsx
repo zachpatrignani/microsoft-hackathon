@@ -30,7 +30,7 @@ const JobListContainer = () => {
     const jobFilters = useSelector((state: RootState) => state.jobFilters.filters);
     // const [items,setItems] = useState([...allJobs.slice(0,itemsPerPage)]);
     const currentPage = useSelector((state: RootState) => state.jobList.currentPage);
-    
+    const [count, setCount] = useState(0);
     const selectedPageMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
 
     const handlePageClick = (event:any) => {
@@ -45,10 +45,12 @@ const JobListContainer = () => {
 
 
     const populatingJobRedux = async () => {
-        const jobs : any = await getJobs(currentPage+1, itemsPerPage, jobFilters);
+        const { jobs, _count }: any = await getJobs(currentPage+1, itemsPerPage, jobFilters);
         const allCards = document.querySelectorAll('.job-card');
         
-        dispatch(setJobList(jobs.data.data));
+        setCount(_count);
+        dispatch(setJobList(jobs));
+
         
 
         if (allCards[0] !== undefined) {
@@ -62,7 +64,7 @@ const JobListContainer = () => {
 
     useEffect(()=>{
         populatingJobRedux();
-    },[jobFilters, currentPage]);
+    },[dispatch, jobFilters, currentPage]);
 
     // useEffect(()=> {
         
@@ -159,7 +161,7 @@ const JobListContainer = () => {
                 previousLabel={"← Previous"}
                 nextLabel={"Next →"}
                 breakLabel={"..."}
-                pageCount={currentPage + 5}
+                pageCount={Math.ceil(count / itemsPerPage)}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={2}
                 onPageChange={handlePageClick}

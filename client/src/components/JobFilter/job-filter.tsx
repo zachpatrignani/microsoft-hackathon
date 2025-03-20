@@ -7,7 +7,6 @@ import {
   setDatePosted,
   setSalary,
   setSearch,
-  setIsAiSearch,
   setWorkType,
   setEmploymentType,
 } from "../../redux/jobFilters.slice";
@@ -19,7 +18,6 @@ const JobFilter = () => {
   const [openDateFilter, setOpenDateFilter] = useState<boolean>(false);
   const [openWorkTypeFilter, setOpenWorkTypeFilter] = useState<boolean>(false);
   const [openEmploymentTypeFilter, setOpenEmploymentTypeFilter ] = useState<boolean>(false);
-  const [aiSearchCheck, setAiSearchCheck] = useState<boolean>(false);
   const [selectedSalary, setSelectedSalary] = useState<string>("");
   const salaryButtonRef = useRef<HTMLButtonElement>(null);
   const datePostedRef = useRef(null);
@@ -140,10 +138,6 @@ const JobFilter = () => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     dispatch(setSearch(searchQuery));
-    dispatch(setIsAiSearch(aiSearchCheck));
-    alert(
-      `The name you entered was: ${searchQuery} and you are searching with a disability true/false ${aiSearchCheck}`,
-    );
   };
   return (
     <div>
@@ -151,22 +145,12 @@ const JobFilter = () => {
         <div className="search-container">
           <form onSubmit={handleSubmit}>
             <input
-              placeholder={aiSearchCheck ? "Prompt" : "Title/description"}
+              placeholder={"Title/description"}
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </form>
-        </div>
-        <div className="ai-search-check">
-          <label>
-            <input
-              type="checkbox"
-              checked={aiSearchCheck}
-              onChange={() => setAiSearchCheck(!aiSearchCheck)}
-            />
-            Use AI to generate compatible jobs
-          </label>
         </div>
       </div>
       <div className="select-filters">
