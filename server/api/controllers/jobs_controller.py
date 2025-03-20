@@ -22,3 +22,11 @@ def get_jobs_with_limit(limit):
         error_msg = f'Failed to get jobs: {str(e)}'
         log.error(error_msg)
         return response.error(500, error_msg)
+
+def get_jobs_with_limit(limit):
+    try:
+        return response.success(jobs.get_jobs_with_limit(limit))
+    except Exception as e:
+        error_msg = f'Failed to get jobs: {str(e)}'
+        log.error(error_msg)
+        return response.error(500, error_msg)
