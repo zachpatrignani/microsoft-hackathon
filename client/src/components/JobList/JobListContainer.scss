@@ -91,14 +91,18 @@
 
 /* Clear Selections: Underlined and aligned to the right */
 .clear-selections {
-    color: #4f518c;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
     cursor: pointer;
-    text-decoration: underline;
-    font-size: 14px;
+    font-weight: bold;
 }
 
 .clear-selections:hover {
-    color: #333;
+    text-decoration: underline;
 }
 
 
