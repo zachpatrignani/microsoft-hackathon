@@ -19,6 +19,7 @@ import { createPage } from '../../services/exportService';
 import { renderToStaticMarkup } from 'react-dom/server';
 import html2canvas from "html2canvas";
 import rehypeRaw from 'rehype-raw';
+import { Note } from '../../models/note';
 
 
 const JobListContainer = () => {
@@ -32,6 +33,7 @@ const JobListContainer = () => {
     const currentPage = useSelector((state: RootState) => state.jobList.currentPage);
     
     const selectedPageMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
+    const notesMap = useSelector((state: RootState) => state.noteSlice.allGeneratedNotes);
 
     const handlePageClick = (event:any) => {
         dispatch(setCurrentPage(event.selected));
@@ -89,13 +91,27 @@ const JobListContainer = () => {
             if (index > 0) {
                 doc.addPage();
             }
+            
+            let noteBlurbs;
+            if (value._id !== undefined){
+                noteBlurbs = notesMap.get(value._id)
+            }
+
+            if (noteBlurbs === undefined) {
+                noteBlurbs = {
+                    challengeNotes : [],
+                    matchNotes: [],
+                    jobId: ""
+                };
+            }
+            
 
             const htmlString = renderToStaticMarkup(
                 <ReactMarkdown
                     rehypePlugins={[rehypeRaw]} // Enable raw HTML processing
                     skipHtml={false} // Ensure raw HTML is not skipped
                 >
-                    {createPage(value)}
+                    {createPage(value, noteBlurbs)}
                 </ReactMarkdown>
             );
 
