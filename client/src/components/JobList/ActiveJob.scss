@@ -105,4 +105,18 @@
     padding: 20px;
     padding-left: 20px;
 }
+.visit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.visit-link:hover {
+    text-decoration: underline;
+}
  

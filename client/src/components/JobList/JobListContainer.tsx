@@ -64,13 +64,6 @@ const JobListContainer = () => {
         populatingJobRedux();
     },[jobFilters, currentPage]);
 
-    // useEffect(()=> {
-        
-    //     // setItems([...allJobs.slice((offset), (offset)+itemsPerPage)]);
-        
-
-        
-    // }, [currentPage, allJobs, jobFilters]);
 
 
     const clearSelections = () => {
@@ -169,7 +162,7 @@ const JobListContainer = () => {
             
 
             <div className='export-button-container'>
-                <div className='clear-selections' onClick={clearSelections}>Clear</div>
+                {selectedPageMap.size > 0 && <div className='clear-selections' onClick={clearSelections}>Clear</div>}
                 <button disabled={selectedPageMap.size <= 0} onClick={exportPdf}>export{selectedPageMap.size > 0 ? ` (${selectedPageMap.size})` : ""}</button>
             </div>
             

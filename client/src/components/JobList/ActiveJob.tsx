@@ -38,6 +38,12 @@ function ActiveJob() {
     return output;
   }
 
+  const visitSite = (website: string | undefined) => {
+    if (website !== undefined){
+      window.open("https://" + website + "/careers", '_blank', 'noopener,noreferrer');
+    }
+  }
+
   return (
     <div className='ActiveJobView'>
 
@@ -47,6 +53,9 @@ function ActiveJob() {
         </div>
         <div className='main-title'>
           {activeJobObject?.name}
+          <div className="visit-link" onClick={()=>{visitSite(activeJobObject?.website)}}>
+            Visit Careers Site ⇥
+          </div>
         </div>
         <JobNotesGenerator/>
         <div>
