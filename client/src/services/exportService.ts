@@ -2,8 +2,9 @@
 
 
 import { Job } from "../models/job"
+import { Note } from "../models/note"
 
-export const createPage = (jobObject : Job) => {
+export const createPage = (jobObject : Job, noteObject : Note | undefined) => {
     const header = `
 
 <div style="display: flex; align-items: center;">
@@ -52,8 +53,8 @@ ${jobObject.description}
 
 <div style="padding: 20px; border-radius: 5px; background-color: #B2fba5; color: green;">
 
-</div>
 `
+
 
     const challenges = `
 ---
@@ -61,7 +62,8 @@ ${jobObject.description}
 ## Potential Challenges
 
 <div style="padding: 20px; border-radius: 5px; background-color: #ff746c; color: darkred;">
-    `
+
+`
 
     let returnString = "";
 
@@ -84,8 +86,32 @@ ${jobObject.description}
         }
     }
 
+    
+
     returnString += matches;
+
+    if (noteObject?.matchNotes !== undefined) {
+        for (let match of noteObject.matchNotes) {
+            returnString += `- ${match}\n`;
+        }
+    }
+
+    returnString += `
+</div>
+`
+
+
     returnString += challenges;
+
+    if (noteObject?.challengeNotes !== undefined) {
+        for (let challenge of noteObject.challengeNotes) {
+            returnString += `- ${challenge}\n`;
+        }
+    }
+
+    returnString += `
+</div>
+`
 
     return returnString;
 

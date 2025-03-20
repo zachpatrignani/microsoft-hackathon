@@ -17,6 +17,12 @@ function ActiveJob() {
   const [matchNotesAvailable, setMatchNotesAvailable] = useState<boolean>(false);
   const [challengeNotesAvailable, setChallengeNotesAvailable] = useState<boolean>(false);
 
+
+  const [challengeBlurb, setChallengeBlurb] = useState<string[]>([]);
+  const [matchBlurb, setMatchBlurb] = useState<string[]>([]);
+
+
+
   const [activeJobObject, setActiveJobObject] = useState<Job>(allJobs[0]);
   
   useEffect(()=>{
@@ -38,6 +44,37 @@ function ActiveJob() {
     return output;
   }
 
+  const visitSite = (website: string | undefined) => {
+    if (website !== undefined){
+      window.open("https://" + website + "/careers", '_blank', 'noopener,noreferrer');
+    }
+  }
+
+
+  const notesMap = useSelector((state : RootState) => state.noteSlice.allGeneratedNotes);
+
+  useEffect(() => {
+      if (activeJobId !== undefined){
+          
+          let mapObject = notesMap.get(activeJobId);
+          if (mapObject?.challengeNotes !== undefined && mapObject?.matchNotes !== undefined){
+            setMatchNotesAvailable(true);
+            setChallengeNotesAvailable(true);
+            setChallengeBlurb(mapObject.challengeNotes);
+            setMatchBlurb(mapObject.matchNotes);
+          } 
+          else{
+            setMatchNotesAvailable(false);
+            setChallengeNotesAvailable(false);
+          }
+      }
+      else{
+        setMatchNotesAvailable(false);
+        setChallengeNotesAvailable(false);
+      }
+      
+  },[notesMap, activeJobId]);
+
   return (
     <div className='ActiveJobView'>
 
@@ -47,8 +84,11 @@ function ActiveJob() {
         </div>
         <div className='main-title'>
           {activeJobObject?.name}
+          <div className="visit-link" onClick={()=>{visitSite(activeJobObject?.website)}}>
+            Visit Careers Site ⇥
+          </div>
         </div>
-        <JobNotesGenerator/>
+        <JobNotesGenerator jobObject={activeJobObject}/>
         <div>
         </div>
       </div>
@@ -72,7 +112,11 @@ function ActiveJob() {
         <div className='job-details-container'>
           <div className='colored-container match'>
             <div className='secondary-title'> Matching Strengths:</div>
-            <div>TThis is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description</div>
+            <ul className="fancy-list">
+              {matchBlurb.map((blurb, index) => (
+                <li key={index}>{blurb}</li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
@@ -81,7 +125,11 @@ function ActiveJob() {
         <div className='job-details-container'>
           <div className='colored-container challenge'>
             <div className='secondary-title'> Potential Challenges:</div>
-            <div>TThis is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description. This is the employer submitted job description This is the employer submitted job description. This is the employer submitted job description</div>
+            <ul className="fancy-list">
+              {challengeBlurb.map((blurb, index) => (
+                <li key={index}>{blurb}</li>
+              ))}
+            </ul>
           </div>
         </div>
       )}

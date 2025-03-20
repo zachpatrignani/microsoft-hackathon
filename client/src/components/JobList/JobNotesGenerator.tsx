@@ -1,26 +1,38 @@
+
 import React from 'react';
 import './JobListContainer.scss';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Job } from '../../models/job';
+import { Note } from '../../models/note';
 import './JobNotesGenerator.scss';
+import { getNotes } from '../../services/noteService';
+import { updatePreferenceText, updateImpairmentsText } from '../../redux/NoteSlice/noteSlice';
+import { addNote } from '../../redux/NoteSlice/noteSlice';
+import { RootState } from '../../redux/store';
 
 
-interface textInput {
-    preferenceText?: string,
-    impairmentText?: string
+
+interface JobNotesGeneratorProps {
+    jobObject : Job | undefined;
 }
 
 
-const JobNotesGenerator: React.FC = () => {
 
+const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
+
+    const dispatch = useDispatch();
+
+    const notesMap = useSelector((state: RootState) => state.noteSlice.allGeneratedNotes)
 
     const [showModal, setShowModal] = useState<boolean>(false);
 
-    const [textInput, setTextInput] = useState<textInput>({
-        preferenceText : "",
-        impairmentText: ""
-    });
+    const textInput = useSelector((state: RootState) => state.noteSlice.textInput);
+
+    // const [textInput, setTextInput] = useState<textInput>({
+    //     preferenceText : "",
+    //     impairmentText: ""
+    // });
 
 
     // const dispatch = useDispatch();
@@ -32,8 +44,19 @@ const JobNotesGenerator: React.FC = () => {
         setShowModal(true);
     }
 
-    const handleGenerateClick = () => {
-        setShowModal(false);
+    const handleGenerateClick = async () => {
+        const preferences = textInput.preferenceText === undefined ? "NONE" : textInput.preferenceText;
+        const impairments = textInput.impairmentText === undefined ? "NONE" : textInput.impairmentText;
+        if (jobObject !== undefined){
+            const fetchedNotes = await getNotes(jobObject, preferences, impairments);
+            const newNote : Note = {
+                matchNotes : fetchedNotes.matchNotes,
+                challengeNotes : fetchedNotes.challengeNotes,
+                jobObject : jobObject
+            }
+            dispatch(addNote(newNote));
+            setShowModal(false);
+        }
     }
 
     const handleCancelClick = () => {
@@ -41,13 +64,13 @@ const JobNotesGenerator: React.FC = () => {
     }
 
     const handleInputChange = (field: string, value: string) => {
-        setTextInput((prevState) => ({
-            ...prevState,  
-            [field]: value 
-        }));
+        if (field === "preferenceText"){
+            dispatch(updatePreferenceText(value));
+        }
+        else if (field === "impairmentText") {
+            dispatch(updateImpairmentsText(value));
+        }
     };
-
-    
 
     return (
         <div className='generate-button-container'>
@@ -58,26 +81,24 @@ const JobNotesGenerator: React.FC = () => {
                     <textarea 
                         className="job-input"
                         rows={8}
+                        maxLength={300}
                         placeholder="Enter your job preferences here..."
                         onChange={(e)=>{handleInputChange("preferenceText", e.target.value)}}
-                    >
-                        {textInput.preferenceText}
-                    </textarea>
-
+                        value={textInput.preferenceText}   
+                    />
                     <div className='prompt'>Please list any impairments:</div>
                     
                     <textarea
                         className="job-input"
                         rows={8}
+                        maxLength={300}
                         placeholder="Enter any impairments here..."
                         onChange={(e)=>{handleInputChange("impairmentText", e.target.value)}}
-                    >
-                        {textInput.impairmentText}
-                    </textarea>
-                    
+                        value={textInput.impairmentText}
+                    />
                     <div className='button-container'>
                         <button className='cancel-button' onClick={()=>{handleCancelClick()}}>Cancel</button>
-                        <button className='save-button' onClick={()=>{handleGenerateClick()}}>Generate</button>
+                        <button className='save-button' disabled={textInput.preferenceText === "" && textInput.impairmentText=== ""} onClick={()=>{handleGenerateClick()}}>Generate</button>
                     </div>
                 </div>
             </div>}

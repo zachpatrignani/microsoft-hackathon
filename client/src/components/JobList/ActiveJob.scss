@@ -46,6 +46,24 @@
         font-weight: bold;
     }
 
+
+    .fancy-list {
+        list-style-type: disc; /* Keeps traditional bullets */
+        padding-left: 20px; /* Adjust indentation */
+    }
+    
+    .fancy-list li {
+        position: relative;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #333;
+        font-weight: 500;
+        line-height: 1.6;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+    
+    
     .job-location {
         font-size: 0.9rem;
         color: #333;
@@ -96,6 +114,14 @@
     color: green;
     padding: 20px;
     padding-left: 20px;
+
+    animation: popIn 0.25s ease-out;
+
+    .fancy-list li::marker {
+        color: #4CAF50; /* Makes the bullet green */
+        font-size: 1rem; /* Slightly larger bullet */
+    }
+
 }
 
 .challenge {
@@ -104,5 +130,41 @@
     color: darkred;
     padding: 20px;
     padding-left: 20px;
+
+    animation: popIn 0.25s ease-out;
+
+    .fancy-list li::marker {
+        color: darkred; /* Makes the bullet green */
+        font-size: 1rem; /* Slightly larger bullet */
+    }
+}
+.visit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.visit-link:hover {
+    text-decoration: underline;
 }
  
+
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}

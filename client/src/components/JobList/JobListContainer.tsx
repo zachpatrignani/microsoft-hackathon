@@ -19,6 +19,7 @@ import { createPage } from '../../services/exportService';
 import { renderToStaticMarkup } from 'react-dom/server';
 import html2canvas from "html2canvas";
 import rehypeRaw from 'rehype-raw';
+import { Note } from '../../models/note';
 
 
 const JobListContainer = () => {
@@ -32,6 +33,7 @@ const JobListContainer = () => {
     const currentPage = useSelector((state: RootState) => state.jobList.currentPage);
     const [count, setCount] = useState(0);
     const selectedPageMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
+    const notesMap = useSelector((state: RootState) => state.noteSlice.allGeneratedNotes);
 
     const handlePageClick = (event:any) => {
         dispatch(setCurrentPage(event.selected));
@@ -66,13 +68,6 @@ const JobListContainer = () => {
         populatingJobRedux();
     },[dispatch, jobFilters, currentPage]);
 
-    // useEffect(()=> {
-        
-    //     // setItems([...allJobs.slice((offset), (offset)+itemsPerPage)]);
-        
-
-        
-    // }, [currentPage, allJobs, jobFilters]);
 
 
     const clearSelections = () => {
@@ -98,13 +93,27 @@ const JobListContainer = () => {
             if (index > 0) {
                 doc.addPage();
             }
+            
+            let noteBlurbs : Note | undefined;
+            if (value._id !== undefined){
+                noteBlurbs = notesMap.get(value._id)
+            }
+
+            if (noteBlurbs === undefined) {
+                noteBlurbs  = {
+                    challengeNotes : [],
+                    matchNotes: [],
+                    jobObject: undefined
+                };
+            }
+            
 
             const htmlString = renderToStaticMarkup(
                 <ReactMarkdown
                     rehypePlugins={[rehypeRaw]} // Enable raw HTML processing
                     skipHtml={false} // Ensure raw HTML is not skipped
                 >
-                    {createPage(value)}
+                    {createPage(value, noteBlurbs)}
                 </ReactMarkdown>
             );
 
@@ -171,7 +180,7 @@ const JobListContainer = () => {
             
 
             <div className='export-button-container'>
-                <div className='clear-selections' onClick={clearSelections}>Clear</div>
+                {selectedPageMap.size > 0 && <div className='clear-selections' onClick={clearSelections}>Clear</div>}
                 <button disabled={selectedPageMap.size <= 0} onClick={exportPdf}>export{selectedPageMap.size > 0 ? ` (${selectedPageMap.size})` : ""}</button>
             </div>
             
