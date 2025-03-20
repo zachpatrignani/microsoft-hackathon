@@ -5,7 +5,7 @@ from dal.db import jobs_collection, users_collection, coach_collection, clients_
 # Job Queries --------------
 
 def get_all_jobs(converted_query: dict):
-    cursor = jobs_collection.find(converted_query['filters']).skip((converted_query['page'] - 1) * converted_query['limit']).limit(converted_query['limit'])
+    cursor = jobs_collection.find(converted_query['filters']).sort({"_createdAt": -1}).skip((converted_query['page'] - 1) * converted_query['limit']).limit(converted_query['limit'])
     return list(cursor), jobs_collection.count_documents(converted_query['filters'])
 
 def get_jobs_with_limit(limit):
