@@ -47,8 +47,8 @@ const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
     }
 
     const handleGenerateClick = async () => {
-        const preferences = textInput.preferenceText === undefined ? "" : textInput.preferenceText;
-        const impairments = textInput.impairmentText === undefined ? "" : textInput.impairmentText;
+        const preferences = textInput.preferenceText === undefined ? "NONE" : textInput.preferenceText;
+        const impairments = textInput.impairmentText === undefined ? "NONE" : textInput.impairmentText;
         if (jobObject !== undefined){
             const fetchedNotes = await getNotes(jobObject, preferences, impairments);
             const newNote : Note = {
@@ -83,6 +83,7 @@ const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
                     <textarea 
                         className="job-input"
                         rows={8}
+                        maxLength={300}
                         placeholder="Enter your job preferences here..."
                         onChange={(e)=>{handleInputChange("preferenceText", e.target.value)}}
                     >
@@ -94,6 +95,7 @@ const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
                     <textarea
                         className="job-input"
                         rows={8}
+                        maxLength={300}
                         placeholder="Enter any impairments here..."
                         onChange={(e)=>{handleInputChange("impairmentText", e.target.value)}}
                     >
@@ -102,7 +104,7 @@ const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
                     
                     <div className='button-container'>
                         <button className='cancel-button' onClick={()=>{handleCancelClick()}}>Cancel</button>
-                        <button className='save-button' onClick={()=>{handleGenerateClick()}}>Generate</button>
+                        <button className='save-button' disabled={textInput.preferenceText === "" && textInput.impairmentText=== ""} onClick={()=>{handleGenerateClick()}}>Generate</button>
                     </div>
                 </div>
             </div>}
