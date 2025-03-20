@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface JobFilters {
   wage?: number;
-  _createdAt?: Date;
+  _createdAt?: string;
   workType?: string;
   employmentType?: string;
   search?: string;
