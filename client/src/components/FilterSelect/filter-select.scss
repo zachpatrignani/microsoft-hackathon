@@ -13,7 +13,7 @@
 }
 .filter-btn {
     display: flex;
-    background-color: #007bff; // Primary blue color
+    background-color: #b474d6; 
     color: #fff; // White text
     border: none;
     font-size: 16px;
@@ -24,15 +24,15 @@
         background 0.3s ease,
         transform 0.2s ease;
 
-    &:hover {
-        background-color: #0056b3; // Darker blue for hover
-        transform: translateY(-2px); // Slight lift effect
-    }
+        &:hover {
+            background-color: #7d3ba6; // Darker blue for hover
+            transform: translateY(-2px); // Slight lift effect
+        }
 
-    &:active {
-        background-color: #004494; // Even darker for active press
-        transform: translateY(0px);
-    }
+        &:active {
+            background-color: #7d3ba6; // Even darker for active press
+            transform: translateY(0px);
+        }
 }
 .filter-menu-btn {
     margin-top: 10px;

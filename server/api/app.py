@@ -1,4 +1,4 @@
-from flask_cors import cross_origin
+from flask_cors import CORS
 from flask import Flask, request
 from waitress import serve
 import logging
@@ -7,6 +7,9 @@ from api.routes.jobs import jobs_api
 log = logging.getLogger(__name__)
 
 app = Flask(__name__)
+
+CORS(app)
+
 app.url_map.strict_slashes = False
 app.register_blueprint(jobs_api)
 

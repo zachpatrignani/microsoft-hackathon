@@ -1,13 +1,15 @@
 import "./job-filter.scss";
 
 import React, { FormEvent, useState, useRef } from "react";
-import { RootState } from "../../redux/store";
-import { useSelector, useDispatch } from "react-redux";
+
+import { useDispatch } from "react-redux";
 import {
   setDatePosted,
   setSalary,
   setSearch,
   setIsAiSearch,
+  setWorkType,
+  setEmploymentType,
 } from "../../redux/jobFilters.slice";
 import FilterSelect from "../FilterSelect/filter-select";
 
@@ -15,11 +17,17 @@ const JobFilter = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [openSalaryFilter, setOpenSalaryFilter] = useState<boolean>(false);
   const [openDateFilter, setOpenDateFilter] = useState<boolean>(false);
+  const [openWorkTypeFilter, setOpenWorkTypeFilter] = useState<boolean>(false);
+  const [openEmploymentTypeFilter, setOpenEmploymentTypeFilter ] = useState<boolean>(false);
   const [aiSearchCheck, setAiSearchCheck] = useState<boolean>(false);
   const [selectedSalary, setSelectedSalary] = useState<string>("");
   const salaryButtonRef = useRef<HTMLButtonElement>(null);
   const datePostedRef = useRef(null);
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const remoteRef = useRef(null);
+  const [selectedWorkType, setSelectedWorkType] = useState<string>("");
+  const employmentTypeRef = useRef(null);
+  const [selectedEmploymentType, setSelectedEmploymentType] = useState<string>("");
 
   const salaryOptions = [
     "$30000+",
@@ -32,12 +40,15 @@ const JobFilter = () => {
     "$100000+",
   ];
 
+  const dateOptions = ["Any time", "Past month", "Past week", "Past 24 hours"];
+  const workTypeOptions  = ["Remote", "Hybrid", "In-Person"];
+  const emlpoymentTypeOptions = ["Part-Time", "Full-Time", "Contract", "Intern", "Temporary"];
+
   const parseSalary = (s: string) => {
     const parsedValue = parseInt(s?.replace(/[^\d.-]/g, ""), 10);
     return parsedValue;
   };
 
-  const dateOptions = ["Any time", "Past month", "Past week", "Past 24 hours"];
 
   const dispatch = useDispatch();
 
@@ -93,6 +104,38 @@ const JobFilter = () => {
     setOpenDateFilter(false);
     dispatch(setDatePosted(undefined));
   };
+  const handleWorkTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedWorkType(event.target.value);
+  };
+
+  const onWorkTypeApply = () => {
+    dispatch(setWorkType(selectedWorkType));
+    setOpenWorkTypeFilter(false);
+  };
+
+  const onWorkTypeOpen = () => setOpenWorkTypeFilter(!openWorkTypeFilter);
+
+  const onWorkTypeCancel = () => {
+    setSelectedWorkType("");
+    setOpenWorkTypeFilter(false);
+    dispatch(setWorkType(undefined));
+  } 
+  const handleEmploymentTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedEmploymentType(event.target.value);
+  };
+
+  const onEmploymentTypeApply = () => {
+    dispatch(setEmploymentType(selectedEmploymentType));
+    setOpenEmploymentTypeFilter(false);
+  };
+
+  const onEmploymentTypeOpen = () => setOpenEmploymentTypeFilter(!openEmploymentTypeFilter);
+
+  const onEmploymentTypeCancel = () => {
+    setSelectedEmploymentType("");
+    setOpenEmploymentTypeFilter(false);
+    dispatch(setEmploymentType(undefined));
+  };;
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -148,6 +191,28 @@ const JobFilter = () => {
           onFilterCancel={onDateCancel}
           onFilterOpen={onDateOpen}
           handleSelectionChange={handleDateChange}
+        />
+        <FilterSelect
+          name="Remote"
+          buttonRef={remoteRef}
+          isOpenFilter={openWorkTypeFilter}
+          currentSelectedVal={selectedWorkType}
+          filterData={workTypeOptions}
+          onFilterApply={onWorkTypeApply}
+          onFilterCancel={onWorkTypeCancel}
+          onFilterOpen={onWorkTypeOpen}
+          handleSelectionChange={handleWorkTypeChange}
+        />
+        <FilterSelect
+          name="Full-Time"
+          buttonRef={employmentTypeRef}
+          isOpenFilter={openEmploymentTypeFilter}
+          currentSelectedVal={selectedEmploymentType}
+          filterData={emlpoymentTypeOptions}
+          onFilterApply={onEmploymentTypeApply}
+          onFilterCancel={onEmploymentTypeCancel}
+          onFilterOpen={onEmploymentTypeOpen}
+          handleSelectionChange={handleEmploymentTypeChange}
         />
       </div>
     </div>

@@ -1,9 +1,10 @@
 .jobBoard {
-    width: 80%;             // or a specific width (e.g., 80%)
+    width: 100%;             // or a specific width (e.g., 80%)
     height: 100vh;           // or any fixed height (e.g., 500px)
-    margin-left: 10%;
-    margin-right: 10%;
-    padding: 20px;
+    // padding: 20px;           // Optional padding for inner spacing
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 40px;
     
     // box-sizing: border-box;  // Include padding in width/height calculation
     position: relative; 

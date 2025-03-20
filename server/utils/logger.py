@@ -10,7 +10,7 @@ def config_logger():
     logging.basicConfig(
         format=str_format,
         datefmt=date_format,
-        level=logging.DEBUG
+        level=logging.INFO
     )
 
     old_factory = logging.getLogRecordFactory()
