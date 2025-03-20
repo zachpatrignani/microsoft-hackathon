@@ -18,12 +18,12 @@ import { createPage } from '../../services/exportService';
 
 
 const JobListContainer = () => {
-    const itemsPerPage = 10;
+    const itemsPerPage = 30;
     const dispatch = useDispatch();
 
     const allJobs = useSelector((state: RootState ) => state.jobList.allJobs);
     const activeJobId = useSelector((state: RootState ) => state.jobList.activeJobId);
-
+    const jobFilters = useSelector((state: RootState) => state.jobFilters.filters);
     const [items,setItems] = useState([...allJobs.slice(0,itemsPerPage)]);
     const currentPage = useSelector((state: RootState) => state.jobList.currentPage);
     
@@ -41,13 +41,13 @@ const JobListContainer = () => {
 
 
     const populatingJobRedux = async () => {
-        const jobs : any = await getJobs(300);
+        const jobs : any = await getJobs(currentPage, itemsPerPage, jobFilters);
         dispatch(setJobList(jobs.data.data));
     }
 
     useEffect(()=>{
         populatingJobRedux();
-    },[]);
+    },[jobFilters, currentPage]);
 
     useEffect(()=> {
         

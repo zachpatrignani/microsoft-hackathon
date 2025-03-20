@@ -41,8 +41,8 @@ const JobFilter = () => {
   ];
 
   const dateOptions = ["Any time", "Past month", "Past week", "Past 24 hours"];
-  const workTypeOptions  = ["Remote", "Hybrid", "On-Site"];
-  const emlpoymentTypeOptions = ["Part-Time", "Full-Time", "Contract"];
+  const workTypeOptions  = ["Remote", "Hybrid", "In-Person"];
+  const emlpoymentTypeOptions = ["Part-Time", "Full-Time", "Contract", "Intern", "Temporary"];
 
   const parseSalary = (s: string) => {
     const parsedValue = parseInt(s?.replace(/[^\d.-]/g, ""), 10);

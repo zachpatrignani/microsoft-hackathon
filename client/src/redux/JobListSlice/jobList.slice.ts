@@ -8,7 +8,7 @@ export interface JobListState {
 }
 
 // Define initial state
-const initialState: JobListState = { allJobs: [], activeJobId: undefined, currentPage: 0};
+const initialState: JobListState = { allJobs: [], activeJobId: undefined, currentPage: 1};
 
 // Define slice
 const jobListSlice = createSlice({

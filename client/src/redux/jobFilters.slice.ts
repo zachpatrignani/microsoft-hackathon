@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface JobFilters {
-  salary?: number;
-  datePosted?: Date;
+export interface JobFilters {
+  wage?: number;
+  _createdAt?: Date;
   workType?: string;
   employmentType?: string;
   search?: string;
@@ -17,8 +17,8 @@ export interface JobFiltersState {
 // Define initial state
 export const initialState: JobFiltersState = {
   filters: {
-    salary: undefined,
-    datePosted: undefined,
+    wage: undefined,
+    _createdAt: undefined,
     workType: undefined,
     employmentType: undefined,
     search: undefined,
@@ -32,10 +32,10 @@ const jobFiltersSlice = createSlice({
   initialState,
   reducers: {
     setSalary(state, action) {
-      state.filters.salary = action.payload;
+      state.filters.wage = action.payload;
     },
     setDatePosted(state, action) {
-      state.filters.datePosted = action.payload;
+      state.filters._createdAt = action.payload;
     },
     setWorkType(state, action) {
       state.filters.workType = action.payload;
