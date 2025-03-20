@@ -3,7 +3,7 @@ import { enableMapSet } from "immer";
 import { Note } from "../../models/note";
 
 export interface NoteState {
-    allGeneratedNotes: Map<string,Note>;
+    allGeneratedNotes: Map<string | undefined,Note>;
 }
 
 
@@ -18,7 +18,7 @@ const noteSlice = createSlice({
     initialState,
     reducers: {
         addNote(state, action: PayloadAction<Note>) {
-            state.allGeneratedNotes.set(action.payload.jobId, action.payload);
+            state.allGeneratedNotes.set(action.payload.jobObject?._id, action.payload);
         },
 
         removeNote(state, action: PayloadAction<string>) {

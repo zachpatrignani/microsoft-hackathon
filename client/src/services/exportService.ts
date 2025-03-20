@@ -52,6 +52,7 @@ ${jobObject.description}
 ## Matching Strengths
 
 <div style="padding: 20px; border-radius: 5px; background-color: #B2fba5; color: green;">
+
 `
 
 
