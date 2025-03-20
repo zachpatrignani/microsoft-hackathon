@@ -27,8 +27,7 @@ def get_jobs_with_limit(limit):
 def add_job():
     try:
         data = request.get_json()
-        console.log("here")
-        return response.success(jobs.add_job(new_job))
+        return response.success(jobs.add_job(data))
     except Exception as e:
         error_msg = f'Failed to get jobs: {str(e)}'
         log.error(error_msg)

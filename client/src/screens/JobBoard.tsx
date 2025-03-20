@@ -7,8 +7,8 @@ function JobBoard() {
     <div className="container">
       <div className="jobBoard">
         <h1>Job Board</h1>
-        <a href="/add-job" className="add-job-link">+ Add Job</a>
         <JobFilter />
+        <a href="/add-job" className="add-job-link">+ Add Job</a>
         <JobListContainer />
       </div>
     </div>
