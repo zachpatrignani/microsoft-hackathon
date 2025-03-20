@@ -10,6 +10,10 @@ export const convertyFiltersToMOngoQuery = (filters: JobFilters) => {
     if (filters.workType) {
         query.workType = filters.workType;
     }
+    
+    if (filters._createdAt) {
+        query._createdAt = { '$gte': filters._createdAt.replace('Z', '+00:00') }
+    }
 
     if (filters.employmentType) {
         query.employmentType = filters.employmentType;
@@ -21,7 +25,7 @@ export const convertyFiltersToMOngoQuery = (filters: JobFilters) => {
             { 'description': { '$regex': filters.search, '$options': "i" } }  // Case-insensitive search
         ];  // Search in title or description
     }
-    console.log(query)
+    console.log(JSON.stringify(query))
     return encodeURIComponent(JSON.stringify(query));
 }
 
