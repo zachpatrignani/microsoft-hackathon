@@ -11,11 +11,11 @@ def get_all_jobs(query):
     converted_query['page'] = int(query.get('page', 1))
     converted_query['filters'] = json.loads(query.get('filters', '{}')) or {}
     print(converted_query)
-    jobs = dal.queries.get_all_jobs(converted_query)
+    jobs, count = dal.queries.get_all_jobs(converted_query)
+    print(count)
     for job in jobs:
         job['_id'] = str(job['_id'])
-    print(jobs)
-    return jobs
+    return jobs, count
 
 
 
@@ -25,7 +25,6 @@ def get_jobs_with_limit(limit):
     for job in jobObject:
         job['_id'] = str(job['_id'])
 
-    print(jobObject)
     
     return jobObject
     

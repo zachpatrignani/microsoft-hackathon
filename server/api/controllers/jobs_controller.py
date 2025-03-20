@@ -10,7 +10,8 @@ log = logging.getLogger()
 
 def get_all_jobs():
     try:
-        return response.success(jobs.get_all_jobs(request.args))
+        _jobs, count = jobs.get_all_jobs(request.args)
+        return response.success({'jobs': _jobs, 'count': count})
     except Exception as e:
         error_msg = f'Failed to get jobs: {str(e)}'
         log.error(error_msg)
