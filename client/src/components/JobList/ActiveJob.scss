@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Canva+Sans:wght@400;600;700&display=swap');
+
+.header-container {
+    display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin: 0;  // Remove space between cards
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;  // Ensure content doesn't overflow the card boundaries
+    font-family: 'Canva Sans', sans-serif;
+
+    .logo-container {
+        flex: 0 0 120px; // Fixed width for image container
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+        .logo {
+            width: 100%;
+        }
+    .main-title {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 10px;
+      font-size: 1.5rem;
+      padding-top: 30px;
+      font-weight: bold;
+      
+    }
+    
+}
+
+.job-details-container {
+    // display: flex;
+    background-color: #fff;
+    // border-bottom: 1px solid #ddd;
+    font-family: 'Canva Sans', sans-serif;
+    padding: 20px;
+
+    .secondary-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+
+    .fancy-list {
+        list-style-type: disc; /* Keeps traditional bullets */
+        padding-left: 20px; /* Adjust indentation */
+    }
+    
+    .fancy-list li {
+        position: relative;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #333;
+        font-weight: 500;
+        line-height: 1.6;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+    
+    
+    .job-location {
+        font-size: 0.9rem;
+        color: #333;
+    }
+    .job-salary {
+        font-size: 0.9rem;
+        color: #333;
+    }
+    .job-date-posted {
+        font-size: 0.9rem;
+        color: #333;
+    }
+
+}
+
+.job-details-container {
+    // display: flex;
+    background-color: #fff;
+    // border-bottom: 1px solid #ddd;
+    font-family: 'Canva Sans', sans-serif;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+
+    .secondary-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .job-location {
+        font-size: 0.9rem;
+        color: #333;
+    }
+    .job-salary {
+        font-size: 0.9rem;
+        color: #333;
+    }
+    .job-date-posted {
+        font-size: 0.9rem;
+        color: #333;
+    }
+
+}
+
+.match {
+    border-radius: 5px;
+    background-color: #B2fba5;
+    color: green;
+    padding: 20px;
+    padding-left: 20px;
+
+    animation: popIn 0.25s ease-out;
+
+    .fancy-list li::marker {
+        color: #4CAF50; /* Makes the bullet green */
+        font-size: 1rem; /* Slightly larger bullet */
+    }
+
+}
+
+.challenge {
+    border-radius: 5px;
+    background-color: #ff746c;
+    color: darkred;
+    padding: 20px;
+    padding-left: 20px;
+
+    animation: popIn 0.25s ease-out;
+
+    .fancy-list li::marker {
+        color: darkred; /* Makes the bullet green */
+        font-size: 1rem; /* Slightly larger bullet */
+    }
+}
+.visit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.visit-link:hover {
+    text-decoration: underline;
+}
+ 
+
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}

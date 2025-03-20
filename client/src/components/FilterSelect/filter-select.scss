@@ -1,0 +1,70 @@
+.filter {
+    padding: 5px;
+    .filter-list {
+        position: absolute;
+        background-color: white;
+        padding: 25px;
+        border: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: auto;
+        text-align: left;
+        z-index: 10;
+    }
+}
+.filter-btn {
+    display: flex;
+    background-color: #b474d6; 
+    color: #fff; // White text
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+
+        &:hover {
+            background-color: #7d3ba6; // Darker blue for hover
+            transform: translateY(-2px); // Slight lift effect
+        }
+
+        &:active {
+            background-color: #7d3ba6; // Even darker for active press
+            transform: translateY(0px);
+        }
+}
+.filter-menu-btn {
+    margin-top: 10px;
+    display: flexbox;
+    justify-content: space-between;
+    button {
+        &:hover {
+            background-color: #0056b3; // Darker blue for hover
+            transform: translateY(-2px); // Slight lift effect
+        }
+
+        &:active {
+            background-color: #004494; // Even darker for active press
+            transform: translateY(0px);
+        }
+    }
+    .btn-filter-apply {
+        background-color: #007bff; // Primary blue color
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border: 4px;
+        cursor: pointer;
+        margin: 5px;
+    }
+    .btn-filter-cancel {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border: 4px;
+        cursor: pointer;
+        margin: 5px;
+    }
+}
