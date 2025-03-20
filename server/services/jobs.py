@@ -3,6 +3,7 @@ from models.jobs_model import  JobWorkType, JobEmploymentType
 from datetime import datetime
 import dal.queries
 import json
+from dal import queries
 
 def get_all_jobs(query):
     converted_query = {}
@@ -28,5 +29,7 @@ def get_jobs_with_limit(limit):
     
     return jobObject
     
+def add_job(data):
+    data['_createdAt'] = datetime.now().strftime('%m-%d-%Y')
 
-
+    return queries.add_job(data)

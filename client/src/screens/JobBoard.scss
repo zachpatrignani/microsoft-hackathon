@@ -1,14 +1,27 @@
 .jobBoard {
-    width: 100%;             // or a specific width (e.g., 80%)
-    height: 100vh;           // or any fixed height (e.g., 500px)
-    // padding: 20px;           // Optional padding for inner spacing
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 40px;
-    
-    box-sizing: border-box;  // Include padding in width/height calculation
-    overflow: auto;          // Makes the content scrollable if it overflows
+    padding: 20px;           
     position: relative; 
-    justify-content: center; // Center content horizontally
-    align-items: center;     // Center content vertically
+    justify-content: center; 
+    align-items: center;   
+  }
+
+  .add-job-link {
+    display: block;
+    background-color: #ffffff;
+    color: #009e2f;
+    border: 3px solid #009e2f;
+    border-radius: 15px;
+    padding: 5px 20px;
+    max-width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: auto;
+    margin-bottom: 10px;
+  
+    &:hover {
+      background-color: #009e2f;
+      border-color: #009e2f;
+      color: #fff;
+    }
   }

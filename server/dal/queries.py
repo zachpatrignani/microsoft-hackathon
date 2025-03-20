@@ -15,7 +15,7 @@ def get_jobs_with_limit(limit):
 
 def add_job(job_data):
     """Insert a new job into the jobs collection."""
-    return jobs_collection.insert_one(job_data)
+    return str(jobs_collection.insert_one(job_data).inserted_id)
 
 def delete_job(job_id):
     """Delete a job from the jobs collection."""
