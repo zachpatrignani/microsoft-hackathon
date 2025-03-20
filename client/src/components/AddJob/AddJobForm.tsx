@@ -265,7 +265,9 @@ function AddJobForm() {
                             </option>
                             <option value="Part-Time">Part-Time</option>
                             <option value="Full-Time">Full-Time</option>
-                            <option value="Hybrid">Hybrid</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Intern">Intern</option>
+                            <option value="Temporary">Temporary</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -294,7 +296,7 @@ function AddJobForm() {
                             Work type
                             </option>
                             <option value="Remote">Remote</option>
-                            <option value="On-Site">On-Site</option>
+                            <option value="In-Person">In-Person</option>
                             <option value="Hybrid">Hybrid</option>
                         </select>
                     </div>

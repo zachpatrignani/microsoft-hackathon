@@ -30,22 +30,6 @@ def get_jobs_with_limit(limit):
     return jobObject
     
 def add_job(data):
-        new_job = {
-            'name': data['name'],
-            'company': data['company'],
-            'industry': data['industry'],
-            'description': data['description'],
-            'description': data['description'],
-            'skills': data['skills'],
-            'responsibilities': data['responsibilities'],
-            'city': data['city'],
-            'state': data['state'],
-            'employmentType': data['employmentType'],
-            'wage': data['wage'],
-            'workType': data['workType'],
-            'employerPhone': data['employerPhone'],
-            'employerEmail': data['employerEmail'],
-            'website': data['website']
-        }
-  
-        return queries.add_job(new_job)
+    data['_createdAt'] = datetime.now().strftime('%m-%d-%Y')
+
+    return queries.add_job(data)
