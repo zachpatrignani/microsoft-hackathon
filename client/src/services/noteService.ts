@@ -1,12 +1,14 @@
 import axios from "axios";
+import { Job } from "../models/job";
 import { Note } from "../models/note";
 
-export const getNotes = async (jobId: string, preference: string, impairments: string) => {
+export const getNotes = async (jobObject: Job, preference: string, impairments: string) => {
     
     const apiUrl = process.env.REACT_APP_SERVER_API_ENDPOINT;
 
-    const response = await axios.get(`${apiUrl}/notes?preferences=${preference}&impairments=${impairments}&jobId=${jobId}`);
+    let jobObjectString : string = JSON.stringify(jobObject)
 
-    console.log("maheer2", response);
+    const response = await axios.get(`${apiUrl}/notes?preferences=${preference}&impairments=${impairments}&jobObject=${jobObjectString}`);
+
     return response.data.data;
 } 

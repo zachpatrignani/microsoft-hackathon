@@ -57,7 +57,6 @@ function ActiveJob() {
       if (activeJobId !== undefined){
           
           let mapObject = notesMap.get(activeJobId);
-          console.log("maheer4", mapObject, activeJobId);
           if (mapObject?.challengeNotes !== undefined && mapObject?.matchNotes !== undefined){
             setMatchNotesAvailable(true);
             setChallengeNotesAvailable(true);
@@ -89,7 +88,7 @@ function ActiveJob() {
             Visit Careers Site ⇥
           </div>
         </div>
-        <JobNotesGenerator jobId={activeJobId}/>
+        <JobNotesGenerator jobObject={activeJobObject}/>
         <div>
         </div>
       </div>

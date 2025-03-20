@@ -1,5 +1,6 @@
+import { Job } from "./job";
 export interface Note {
-  jobId: string;
+  jobObject?: Job;
   matchNotes?: string[];
   challengeNotes?: string[];
 }

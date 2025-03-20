@@ -92,16 +92,16 @@ const JobListContainer = () => {
                 doc.addPage();
             }
             
-            let noteBlurbs;
+            let noteBlurbs : Note | undefined;
             if (value._id !== undefined){
                 noteBlurbs = notesMap.get(value._id)
             }
 
             if (noteBlurbs === undefined) {
-                noteBlurbs = {
+                noteBlurbs  = {
                     challengeNotes : [],
                     matchNotes: [],
-                    jobId: ""
+                    jobObject: undefined
                 };
             }
             

@@ -18,17 +18,16 @@ interface textInput {
 };
 
 interface JobNotesGeneratorProps {
-    jobId : string | undefined;
+    jobObject : Job | undefined;
 }
 
 
 
-const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobId}) => {
+const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
 
     const dispatch = useDispatch();
 
     const notesMap = useSelector((state: RootState) => state.noteSlice.allGeneratedNotes)
-
 
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -50,12 +49,14 @@ const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobId}) => {
     const handleGenerateClick = async () => {
         const preferences = textInput.preferenceText === undefined ? "" : textInput.preferenceText;
         const impairments = textInput.impairmentText === undefined ? "" : textInput.impairmentText;
-
-        console.log("maheer", preferences, impairments)
-        if (jobId !== undefined){
-            const fetchedNotes : Note = await getNotes(jobId, preferences, impairments);
-            console.log("maheer3",fetchedNotes)
-            dispatch(addNote(fetchedNotes));
+        if (jobObject !== undefined){
+            const fetchedNotes = await getNotes(jobObject, preferences, impairments);
+            const newNote : Note = {
+                matchNotes : fetchedNotes.matchNotes,
+                challengeNotes : fetchedNotes.challengeNotes,
+                jobObject : jobObject
+            }
+            dispatch(addNote(newNote));
             setShowModal(false);
         }
     }
