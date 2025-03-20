@@ -16,6 +16,10 @@ import ReactMarkdown from "react-markdown";
 import { jsPDF } from "jspdf";
 import { createPage } from '../../services/exportService';
 
+import { renderToStaticMarkup } from 'react-dom/server';
+import html2canvas from "html2canvas";
+import rehypeRaw from 'rehype-raw';
+
 
 const JobListContainer = () => {
     const itemsPerPage = 10;
@@ -68,26 +72,58 @@ const JobListContainer = () => {
     }, [items]);
 
     
-    
-    
-    const exportPdf = () => {
-        // Create a new jsPDF instance
-        const doc = new jsPDF();
+    const exportMap = useSelector((state: RootState) => state.exportSlice.allSelectedJobs);
 
-        // Process the markdown content
+
+    
+    const exportPdf = async () => {
         
-        allJobs.forEach((section, index) => {
-        if (index > 0) {
-            doc.addPage(); // Add a new page for subsequent sections
+        const doc = new jsPDF();
+        let index = 0;
+        doc.setFontSize(8);
+
+        for (const value of Array.from(exportMap.values())) {
+            if (index > 0) {
+                doc.addPage();
+            }
+
+            const htmlString = renderToStaticMarkup(
+                <ReactMarkdown
+                    rehypePlugins={[rehypeRaw]} // Enable raw HTML processing
+                    skipHtml={false} // Ensure raw HTML is not skipped
+                >
+                    {createPage(value)}
+                </ReactMarkdown>
+            );
+
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = htmlString;
+            tempDiv.style.width = "800px"; // Ensure it renders properly
+            tempDiv.style.padding = "20px";
+            document.body.appendChild(tempDiv);
+
+            // Convert the HTML to canvas
+            const canvas = await html2canvas(tempDiv, { scale: 1 });
+            const imgData = canvas.toDataURL("image/png");
+
+            // Calculate image width/height for A4 page
+            const pdfHeight = 200;
+            
+            // const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+            const pdfWidth = (canvas.width * pdfHeight) / canvas.height;
+            // Add image to the PDF
+            doc.addImage(imgData, "PNG", 10, 10, pdfWidth - 20, pdfHeight);
+
+            // Remove temporary div
+            document.body.removeChild(tempDiv);
+
+            if (index === exportMap.size - 1) {
+                doc.save("helping-hand-jobs.pdf");
+            }
+
+            index += 1;
         }
         
-        // Render the content on the current page (ReactMarkdown will convert markdown to HTML)
-        const htmlContent = <ReactMarkdown children={createPage(section)} />;
-
-        console.log("maheer", htmlContent);
-        
-        
-        });
     }
 
 
