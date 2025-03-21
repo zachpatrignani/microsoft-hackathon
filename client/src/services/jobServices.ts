@@ -21,8 +21,10 @@ export const convertyFiltersToMOngoQuery = (filters: JobFilters) => {
 
     if (filters.search) {
         query['$or'] = [
-            { 'title': { '$regex': filters.search, '$options': "i" } },  // Case-insensitive search
-            { 'description': { '$regex': filters.search, '$options': "i" } }  // Case-insensitive search
+            { 'name': { '$regex': filters.search, '$options': "i" } },  // Case-insensitive search
+            { 'description': { '$regex': filters.search, '$options': "i" } },  // Case-insensitive search
+            { 'city': { '$regex': filters.search, '$options': "i" } },  // Case-insensitive search
+            { 'company': { '$regex': filters.search, '$options': "i" } }  // Case-insensitive search
         ];  // Search in title or description
     }
     console.log(JSON.stringify(query))
