@@ -27,10 +27,13 @@ Employers can submit accessible job listings through our "Add Job" form. This pa
 ![Job board page with personalized feedback of strengths and weeknesses for job candidate based on user-submitted information.](client/public/job_board.png)
 
 ## Software Stack
-- Azure Cosmos DB
+- Azure CosmosDB
+- Azure OpenAI Service
 - React
--
+- TypeScript
+- SCSS
 - Python
+- Flask
 
 ## Demo
     Insert link
