@@ -40,12 +40,13 @@ In order to run this project, you will need to add the following information to 
 
 Azure Services:
 
-- 
-- 
+- [Azure Open AI Service with gpt-4o](https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI)
+- [Optional - Azure CosmosDB for MongoDB](https://portal.azure.com/#browse/Microsoft.DocumentDB%2FmongoClusters)
 
 The server/.env file format:
 ```
 COSMOS_DB_URI=<Your path to Cosmos DB>
+DATABASE_NAME=<Your Database name>
 
 COMPLETIONS_AZURE_ENDPOINT=<Your Azure Completions Endpoint>
 COMPLETIONS_API_KEY=<Your Azure Completions API Key>
