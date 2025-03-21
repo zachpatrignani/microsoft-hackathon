@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/global.scss';
 import Navbar from './components/Navbar/Navbar';
 import Home from './screens/Home';
+import Footer from './components/Footer/Footer';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,13 +17,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-    <Navbar />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/job-board" element={<JobBoard />} />
         <Route path="/add-job" element={<AddJob />} />
       </Routes>
-      </BrowserRouter>
+      <Footer />
+    </BrowserRouter>
   </Provider>,
 );
 
