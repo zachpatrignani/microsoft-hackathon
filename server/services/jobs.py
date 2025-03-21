@@ -31,6 +31,6 @@ def get_jobs_with_limit(limit):
     return jobObject
     
 def add_job(data):
-    data['_createdAt'] = datetime.now().strftime('%m-%d-%Y')
+    data['_createdAt'] = datetime.utcnow()
 
     return queries.add_job(data)

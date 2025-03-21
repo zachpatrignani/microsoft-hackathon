@@ -67,15 +67,17 @@ def get_notes(preferences, impairments, jobObjectRawString):
   workType = format_string(jobObject["workType"], word_limit)
   employmentType = format_string(jobObject["employmentType"], word_limit)
   company = format_string(jobObject["company"], word_limit)
+  salary = (jobObject["wage"], word_limit)
+  role = format_string(jobObject["name"], word_limit)
 
 
 
   if preferences != "NONE" and impairments != "NONE":
-    initial_setting = fr"""You are a model that takes user preferences and user impairments as well as job details of a specific job. Your task is to return two lists. One list of reasons why this person will enjoy the job due to their preferences/impairments, and another list of things the user can do to make the job more maangable for them because of their preferences/impairments."""
+    initial_setting = fr"""You are a model that takes user preferences and user impairments as well as job details of a specific job. Your task is to return three lists. One list of reasons why this person will enjoy the job due to their preferences/impairments, a second list of things the user can do to make the job more maangable for them because of their preferences/impairments. The third list you return is a few bullet points about how the salary compares with other salaries posted for similar job titles"""
   elif preferences != "NONE":
-    initial_setting = fr"""You are a model that takes user preferences as well job details of a specific job. Your task is to return two lists. One list of reasons why this person will enjoy the job due to their preferences, and another list of things the user can do to make the job managable for them because of their preferences."""
+    initial_setting = fr"""You are a model that takes user preferences as well job details of a specific job. Your task is to return three lists. One list of reasons why this person will enjoy the job due to their preferences, and another list of things the user can do to make the job managable for them because of their preferences. The third list you return is a few bullet points about how the salary compares with other salaries for similar job titles"""
   else:
-    initial_setting = fr"""You are a model that takes user impairments as well job details of a specific job. Your task is to return two lists. One list of reasons why this person will enjoy the job due to their impairments, and another list of things the user can do to make the job managable for them because of their preferences."""
+    initial_setting = fr"""You are a model that takes user impairments as well job details of a specific job. Your task is to return three lists. One list of reasons why this person will enjoy the job due to their impairments, and another list of things the user can do to make the job managable for them because of their preferences. The third list you return is a few bullet points about how the salary compares with other salaries for similar job titles"""
 
 
   if preferences != "NONE" and impairments != "NONE":
@@ -85,17 +87,11 @@ def get_notes(preferences, impairments, jobObjectRawString):
   else:
     user_prompt = fr"""I am looking for a job. I have the following impairments: {impairments}."""
   
-  job_prompt = fr"""The job I am looking at has these details. Description: {description}, responsibilities: {responsibilities}, skills {skills}, type of work: {workType}, type of employment: {employmentType}, city: {city}"""
+  job_prompt = fr"""The job I am looking at has these details. Compay: {company}, role : {role}, salary: {salary} dollars per year, Description: {description}, responsibilities: {responsibilities}, skills {skills}, type of work: {workType}, type of employment: {employmentType}, city: {city}"""
 
 
-  if preferences != "NONE" and impairments != "NONE":
-    final_prompt = fr"""Please give me your response formatted as python lists titled matchNotes and jobNotes. Give at most 5 notes per list. If the job is a bad fit, say that include that in the notes."""
-  elif preferences != "NONE":
-    final_prompt = fr"""Please give me your response formatted as a python list titled matchNotes. Give at most 5 notes. If the job is a bad fit, say that include that in the notes."""
-  else:
-    final_prompt = fr"""Please give me your response formatted as a python list titled challengeNotes. Give at most 5 notes. If the job is a bad fit, say that include that in the notes."""
-
-
+  final_prompt = fr"""Please give me your response formatted as python lists titled matchNotes, jobNotes and salaryInsights. Give at most 5 notes per list. If the job is a bad fit, say that include that in the notes. The salary insights will be a list with only one string, just make sure to start the string with either COMPETITIVE, ABOVE-AVERAGE or BELOW_AVERAGE based on your judgement"""
+  
   response = client.chat.completions.create(
       model=COMPLETIONS_MODEL, # model = "deployment_name".
       messages=[
@@ -119,6 +115,7 @@ def get_notes(preferences, impairments, jobObjectRawString):
   return {
     "matchNotes" :parsed_data["matchNotes"],
     "challengeNotes" :parsed_data["jobNotes"],
-    "jobId" :jobObject["_id"]
+    "jobId" :jobObject["_id"],
+    "salaryInsights" : parsed_data["salaryInsights"]
   }
 

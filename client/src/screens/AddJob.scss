@@ -1,0 +1,10 @@
+.addJob {
+    padding: 20px 10%; /* Combine padding-left, padding-right, and padding-top */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* Ensure the div stretches to at least the full viewport height */
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Include padding and borders in width/height */ /* Prevent vertical scrolling */
+  }
