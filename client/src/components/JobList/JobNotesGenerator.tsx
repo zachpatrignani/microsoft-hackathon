@@ -52,7 +52,8 @@ const JobNotesGenerator: React.FC<JobNotesGeneratorProps> = ({jobObject}) => {
             const newNote : Note = {
                 matchNotes : fetchedNotes.matchNotes,
                 challengeNotes : fetchedNotes.challengeNotes,
-                jobObject : jobObject
+                jobObject : jobObject,
+                salaryInsights : fetchedNotes.salaryInsights
             }
             dispatch(addNote(newNote));
             setShowModal(false);

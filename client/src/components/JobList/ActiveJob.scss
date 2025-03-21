@@ -79,6 +79,7 @@
 
 }
 
+
 .job-details-container {
     // display: flex;
     background-color: #fff;
@@ -124,6 +125,52 @@
 
 }
 
+.vertical-container {
+    width: 50%;
+}
+
+.salary-insights-container {
+    top: 0;
+    // padding-left: 20px;
+    padding-top: 5px;
+    width: 50%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .green {
+        border-radius: 10px;
+        background-color: #c5ffc9;
+        color: #1e5b22;
+        padding: 10px;
+        animation: popIn 0.25s ease-out;
+        font-size: 0.9rem;
+        top: 0px;
+    
+    }
+    .red {
+        border-radius: 10px;
+        background-color: #ffbaba;
+        color: #d40000;
+        padding: 10px;
+        animation: popIn 0.25s ease-out;
+        font-size: 0.9rem;
+        top: 0px;
+    
+    }
+    .yellow {
+        border-radius: 10px;
+        background-color: #eff5ab;
+        color: #8b7a0c;
+        padding: 10px;
+        animation: popIn 0.25s ease-out;
+        font-size: 0.9rem;
+        top: 0px;
+    
+    }
+}
+
+
 .challenge {
     border-radius: 5px;
     background-color: #ffbaba;
@@ -152,7 +199,14 @@
 .visit-link:hover {
     text-decoration: underline;
 }
- 
+
+.horizontal-container {
+    display: flex;
+}
+
+.salary {
+    font-size: 0.7rem;
+}
 
 
 @keyframes popIn {
