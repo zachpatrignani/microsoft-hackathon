@@ -58,6 +58,8 @@ COMPLETIONS_MODEL=gpt-4o
 
 Note: In order to run this project locally, you will need to setup Azure resources.
 
+First make sure you are running at least [Node v22.14](https://nodejs.org/en/blog/release/v22.14.0) and [Python 3.12](https://www.python.org/downloads/release/python-3128/)
+
 Clone the project
 
 ```bash
