@@ -121,7 +121,7 @@ See the following attribution for images in client/public:
 - planet.jpg, astronaut_dog.jpg, coach.jpg, employer.jpg [Images Designed by Freepik](https://www.freepik.com/)
 
 ## Contact Us
-Our application uses AI to generate feedback for job recommendations based on user data. Azure AI services does not track or store your data. Contact our development team to provide feedback or report a bug with our system:
+Our application uses AI to generate feedback for job recommendations based on user data. [Learn more about how Azure AI uses your data](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/use-your-data?tabs=ai-search%2Ccopilot). Contact our development team to provide feedback or report a bug with our system:
 - [Zach Patrignani](https://github.com/zachpatrignani)
 - [Maheer Sayeed](https://github.com/maheersayeed99)
 - [Ariel Magyar](https://github.com/magyara)
