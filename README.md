@@ -40,8 +40,8 @@ In order to run this project, you will need to add the following information to 
 
 Azure Services:
 
-- 
-- 
+- [Azure Open AI Service with gpt-4o](https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI)
+- [Optional - Azure CosmosDB for MongoDB](https://portal.azure.com/#browse/Microsoft.DocumentDB%2FmongoClusters)
 
 The server/.env file format:
 ```
