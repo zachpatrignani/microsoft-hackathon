@@ -35,9 +35,6 @@ Employers can submit accessible job listings through our "Add Job" form. This pa
 - Python
 - Flask
 
-## Demo
-    Insert link
-
 ## Environment Variables
 In order to run this project, you will need to add the following information to your .env file in server/.env. These Azure services should be created:
 
@@ -102,3 +99,10 @@ See the following attribution for images in client/public:
 - ai_logo.png [Shine icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/shine)
 - warning.png [Attention icons created by Andrean Prabowo - Flaticon](https://www.flaticon.com/free-icons/attention)
 - planet.jpg, astronaut_dog.jpg, coach.jpg, employer.jpg [Images Designed by Freepik](https://www.freepik.com/)
+
+## Contact Us
+Our application uses AI to generate feedback for job recommendations based on user data. Azure AI services does not track or store your data. Contact our development team to provide feedback or report a bug with our system:
+- [Zach Patrignani](https://github.com/zachpatrignani)
+- [Maheer Sayeed](https://github.com/maheersayeed99)
+- [Ariel Magyar](https://github.com/magyara)
+- [George Gomez](https://github.com/georgeg5326)
