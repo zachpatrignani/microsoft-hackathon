@@ -38,7 +38,7 @@ Employers can submit accessible job listings through our "Add Job" form. This pa
 <<<<<<< HEAD
 =======
 ## Design
-!(images/interstellar-jobs.png)
+![arch diagram](images/interstellar-jobs.png)
 
 ## Demo
     Insert link
