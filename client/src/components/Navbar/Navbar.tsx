@@ -64,7 +64,7 @@ function Navbar() {
           className={({ isActive }) => (isActive ? 'active-link' : 'inactive-link')}
           onClick={handleLinkClick} // Close menu when a link is clicked
         >
-          + Add Job
+          Add Job
         </NavLink>
       </div>
     </nav>

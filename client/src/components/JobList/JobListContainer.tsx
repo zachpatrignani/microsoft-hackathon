@@ -139,7 +139,7 @@ const JobListContainer = () => {
             document.body.removeChild(tempDiv);
 
             if (index === exportMap.size - 1) {
-                doc.save("helping-hand-jobs.pdf");
+                doc.save("interstellar-jobs.pdf");
             }
 
             index += 1;
