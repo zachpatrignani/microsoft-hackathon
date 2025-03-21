@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-text">
-        <a href="https://github.com/zachpatrignani/microsoft-hackathon">&copy; {new Date().getFullYear()} All rights reserved. | About Us</a>
+        <a href="https://github.com/zachpatrignani/microsoft-hackathon">&copy; {new Date().getFullYear()} All rights reserved. | Contact Us</a>
       </div>
     </footer>
   );
