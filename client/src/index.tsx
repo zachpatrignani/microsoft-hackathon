@@ -8,6 +8,7 @@ import  { store }  from './redux/store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/global.scss';
 import Navbar from './components/Navbar/Navbar';
+import Home from './screens/Home';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +18,8 @@ root.render(
     <BrowserRouter>
     <Navbar />
       <Routes>
-        <Route path="/" element={<JobBoard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/job-board" element={<JobBoard />} />
         <Route path="/add-job" element={<AddJob />} />
       </Routes>
       </BrowserRouter>

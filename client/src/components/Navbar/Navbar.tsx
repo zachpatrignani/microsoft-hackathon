@@ -39,8 +39,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       <NavLink to="/" className="logo-container">
-        <img src="logo.png" alt="Logo" className="logo" />
-        <span className="logo-text">Helping Hand</span>
+        <img src="planet_logo.png" alt="Logo" className="logo" />
+        <span className="logo-text">Interstellar Jobs</span>
       </NavLink>
       <div
         className="navbar-hamburger"
@@ -53,7 +53,7 @@ function Navbar() {
       </div>
       <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
         <NavLink
-          to="/"
+          to="/job-board"
           className={({ isActive }) => (isActive ? 'active-link' : 'inactive-link')}
           onClick={handleLinkClick} // Close menu when a link is clicked
         >
