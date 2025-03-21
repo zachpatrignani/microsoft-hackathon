@@ -38,6 +38,7 @@ Employers can submit accessible job listings through our "Add Job" form. This pa
 ## Design
 ![arch diagram](images/interstellar-jobs.png)
 
+
 ## Environment Variables
 In order to run this project, you will need to add the following information to your .env file in server/.env. These Azure services should be created:
 
