@@ -160,7 +160,7 @@ const JobListContainer = () => {
                 ))}
             </div>
             <div className='job-active-details'>
-                <ActiveJob/>
+                { activeJobId !== undefined && <ActiveJob/>}
             </div>
         </div>
         
