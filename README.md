@@ -1,12 +1,14 @@
-# Interstellar Jobs
+# Interstellar Jobs 🪐
 We provide AI-powered job recommendations that connect people with disabilities or impairments to accessible employment opportunities.
 
 Search a database of jobs posted by inclusive, accessible employers & receive personalized, AI-generated recommendations that highlight potential strengths and challenges based on individual characteristics.
 
 ## Features
-- 
-- 
-- 
+:star2: feature1
+
+:star2: feature2
+
+:star2: feature3
 
 ## Software Stack
 - Azure Cosmos DB
