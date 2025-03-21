@@ -4,16 +4,32 @@ We provide AI-powered job recommendations that connect people with disabilities 
 Search a database of jobs posted by inclusive, accessible employers & receive personalized, AI-generated recommendations that highlight potential strengths and challenges based on individual characteristics.
 
 ## Features
-:star2: feature1
+🌟 **Landing Page**
 
-:star2: feature2
+The landing page describes the purpose of the project and the roles that Job Candidates, Job Coaches, and Employers play in facilitating accessible employment. It also provides guidance on how to use the AI features in the application, along with clear information about how user data will be used.
 
-:star2: feature3
+🌟 **Job Search Functionality for Job Coaches**
+
+Our job board allows Job Coaches to search through a database of jobs using keywords related to a candidate’s interests. Filters can be applied based on relevant criteria such as salary, date posted, workplace type (e.g., remote or on-site), and employment type (e.g., full-time or part-time).
+
+🌟 **AI Feedback on Job Fit**
+
+Users can request AI-generated feedback based on the job description and their personal input, including job preferences and impairments. The system will provide personalized insights on potential strengths and challenges in the role, helping users identify positions that best match their unique abilities.
+
+🌟 **AI Feedback on Salary Competitiveness**
+
+The AI will also evaluate the listed salary for a role and indicate whether it is competitive based on the region and the type of work.
+
+🌟 **Employer Job Submission & Resources**
+
+Employers can submit accessible job listings through our "Add Job" form. This page also includes resources to help employers learn more about accessible employment practices.
+
+![Job board page with personalized feedback of strengths and weeknesses for job candidate based on user-submitted information.](image.png)
 
 ## Software Stack
 - Azure Cosmos DB
-- 
 - React
+-
 - Python
 
 ## Demo
@@ -64,9 +80,17 @@ Navigate to the /server directory
 ## What's Next?
 Our vision is bigger than our timeline. Here's some features we would love to implement in the future:
 
-- **Authentication & Profiles for Each User Type.** Create authentication and profile management for three user types: Job Candidate, Job Coach, and Employer. Job Coaches should be able to create or manage profiles on behalf of their candidates, storing key information such as location, needs, interests, and resumes. This data would automatically feed into the AI job recommendation system.
-- **Job Coach Collaboration Tools** Enable Job Coaches to share Job Candidate profiles and notes. We aim to support every step of the employment process by providing Job Coaches with the tools needed for their candidates' success. This includes the ability to transfer candidate profiles to another coach if needed and to record notes during the employment journey. These notes can help inform future job matches.
-- **Employer Resources for Accessible Employment.** As part of our mission to promote inclusive employment, we want to provide employers with resources that support the integration of employees with disabilities. These materials will help ensure employers are informed, confident, and successful in creating accessible workplaces.
+🌟 **Authentication & Profiles for Each User Type** 
+
+Create authentication and profile management for three user types: Job Candidate, Job Coach, and Employer. Job Coaches should be able to create or manage profiles on behalf of their candidates, storing key information such as location, needs, interests, and resumes. This data would automatically feed into the AI job recommendation system.
+
+🌟 **Job Coach Collaboration Tools** 
+
+Enable Job Coaches to share Job Candidate profiles and notes. We aim to support every step of the employment process by providing Job Coaches with the tools needed for their candidates' success. This includes the ability to transfer candidate profiles to another coach if needed and to record notes during the employment journey. These notes can help inform future job matches.
+
+🌟 **Employer Education for Accessible Employment** 
+
+As part of our mission to promote inclusive employment, we want to provide employers with resources that support the integration of employees with disabilities. These materials will help ensure employers are informed, confident, and successful in creating accessible workplaces.
 
 ## Attribution
 See the following attribution for images in client/public:
