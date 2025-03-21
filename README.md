@@ -30,6 +30,7 @@ Azure Services:
 The server/.env file format:
 ```
 COSMOS_DB_URI=<Your path to Cosmos DB>
+DATABASE_NAME=<Your Database name>
 
 COMPLETIONS_AZURE_ENDPOINT=<Your Azure Completions Endpoint>
 COMPLETIONS_API_KEY=<Your Azure Completions API Key>
