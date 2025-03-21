@@ -85,7 +85,7 @@ def get_notes(preferences, impairments, jobObjectRawString):
   else:
     user_prompt = fr"""I am looking for a job. I have the following impairments: {impairments}."""
   
-  job_prompt = fr"""The job I am looking at has these details. Description: {description}, responsibilities: {responsibilities}, skills {skills}, type of work: {workType}, type of employment: {employmentType}, city: {city}"""
+  job_prompt = fr"""The job I am looking at has these details. Compay: {company}, Description: {description}, responsibilities: {responsibilities}, skills {skills}, type of work: {workType}, type of employment: {employmentType}, city: {city}"""
 
 
   if preferences != "NONE" and impairments != "NONE":
