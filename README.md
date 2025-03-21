@@ -35,6 +35,15 @@ Employers can submit accessible job listings through our "Add Job" form. This pa
 - Python
 - Flask
 
+<<<<<<< HEAD
+=======
+## Design
+(images/interstellar-jobs.png)
+
+## Demo
+    Insert link
+
+>>>>>>> b6d5d5a (readme update)
 ## Environment Variables
 In order to run this project, you will need to add the following information to your .env file in server/.env. These Azure services should be created:
 
