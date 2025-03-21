@@ -164,7 +164,7 @@ const JobListContainer = () => {
             </div>
         </div>
         
-        <div className="footer">
+        <div className="footer-job-list">
 
             <ReactPaginate
                 previousLabel={"← Previous"}
