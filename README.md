@@ -24,7 +24,7 @@ The AI will also evaluate the listed salary for a role and indicate whether it i
 
 Employers can submit accessible job listings through our "Add Job" form. This page also includes resources to help employers learn more about accessible employment practices.
 
-![Job board page with personalized feedback of strengths and weeknesses for job candidate based on user-submitted information.](image.png)
+![Job board page with personalized feedback of strengths and weeknesses for job candidate based on user-submitted information.](client/public/job_board.png)
 
 ## Software Stack
 - Azure Cosmos DB
