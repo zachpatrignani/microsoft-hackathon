@@ -35,6 +35,9 @@ Employers can submit accessible job listings through our "Add Job" form. This pa
 - Python
 - Flask
 
+## Design
+![arch diagram](images/interstellar-jobs.png)
+
 ## Environment Variables
 In order to run this project, you will need to add the following information to your .env file in server/.env. These Azure services should be created:
 
@@ -58,6 +61,11 @@ COMPLETIONS_MODEL=gpt-4o
 
 Note: In order to run this project locally, you will need to setup Azure resources.
 
+- First, make sure you are running at least [Node v22.14](https://nodejs.org/en/blog/release/v22.14.0) and [Python 3.12](https://www.python.org/downloads/release/python-3128/)
+- This project uses a MongoDB database. We used an Azure CosmosDB for MongoDB cluster. Follow [these](https://www.mongodb.com/try/download/community) steps if you'd like to run Mongo locally.
+- Download [MongoDB Compass](https://www.mongodb.com/try/download/compass) for a GUI experience.
+
+
 Clone the project
 
 ```bash
@@ -77,6 +85,12 @@ Navigate to the /server directory
   pip install -r requirements.txt
   python3 main.py
 ```
+Navigate to MongoDB Compass
+1.  Connect to your CosmosDB cluster or your localhost instance.
+2.  Create a database, i.e. 'interstellar-jobs'
+3.  Create a collection, i.e. 'jobs'
+4.  Add Data -> Import JSON or CSV -> Select helping-hand.Jobs.json inside of server/utils/
+5.  Verify you have 5500 jobs inserted.
 
 ## What's Next?
 Our vision is bigger than our timeline. Here's some features we would love to implement in the future:
