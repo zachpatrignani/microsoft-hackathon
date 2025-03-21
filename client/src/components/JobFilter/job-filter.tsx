@@ -145,7 +145,7 @@ const JobFilter = () => {
         <div className="search-container">
           <form onSubmit={handleSubmit}>
             <input
-              placeholder={"Title/description"}
+              placeholder={"Title, description, company, or city"}
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
