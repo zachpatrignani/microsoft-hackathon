@@ -16,7 +16,7 @@ function Home() {
         <div className="instruction-formatter">
           <div className="instruction-box">
             <p>Search a database of jobs posted by inclusive, accessible employers.</p>
-            <img src="/ai_logo.png" className="ai-logo"/>
+            <img src="/ai_logo.png" className="ai-logo" alt="AI sparkles" />
             <p>Receive personalized, AI-generated recommendations that highlight potential strengths and challenges based on individual characteristics.</p>
           </div>
           <img src="/job_board.png" className="job-board-image" alt="Job board with AI generated feedback based on client information." />  
@@ -44,7 +44,7 @@ function Home() {
       </div>
 
       <div className="warning-container">
-          <img src="/warning.png" />
+          <img src="/warning.png" alt="Warning sign" />
           <h2>Explore Responsibly</h2>
           <p>This platform can optionally use AI to generate feedback for specific jobs based on candidate information. </p>
           <p>If you choose to generate AI insights, you'll be prompted to enter job preferences and relevant impairments. This data is used solely to create a summary of strengths and potential challenges related to the selected job. The information you provide is confidential and will not be stored. </p>

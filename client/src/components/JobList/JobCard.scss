@@ -2,8 +2,8 @@
 
 .job-card {
     display: flex;
-    background-color: #e6e6e6;
-    border: 1px solid #ddd;
+    background-color: #f1f1f1;
+    border: 0.5px solid #ddd;
     margin: 0;  // Remove space between cards
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;  // Ensure content doesn't overflow the card boundaries

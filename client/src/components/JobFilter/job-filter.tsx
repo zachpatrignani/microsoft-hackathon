@@ -177,7 +177,7 @@ const JobFilter = () => {
           handleSelectionChange={handleDateChange}
         />
         <FilterSelect
-          name="Remote"
+          name="Workplace Type"
           buttonRef={remoteRef}
           isOpenFilter={openWorkTypeFilter}
           currentSelectedVal={selectedWorkType}
@@ -188,7 +188,7 @@ const JobFilter = () => {
           handleSelectionChange={handleWorkTypeChange}
         />
         <FilterSelect
-          name="Full-Time"
+          name="Employment Type"
           buttonRef={employmentTypeRef}
           isOpenFilter={openEmploymentTypeFilter}
           currentSelectedVal={selectedEmploymentType}

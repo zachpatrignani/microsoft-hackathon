@@ -6,7 +6,6 @@ function JobBoard() {
   return (
     <div className="jobBoard">
         <JobFilter />
-        {/* <a href="/add-job" className="add-job-link">+ Add Job</a> */}
         <JobListContainer />
     </div>
 
