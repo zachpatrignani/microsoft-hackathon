@@ -5,7 +5,7 @@ import { Note } from "../models/note";
 
 export const getNotes = async (jobObject: Job, preference: string, impairments: string) => {
     
-    const apiUrl = process.env.REACT_APP_SERVER_API_ENDPOINT;
+    const apiUrl = "http://localhost:8000/server/api";
 
     let jobObjectString : string = JSON.stringify(jobObject)
 

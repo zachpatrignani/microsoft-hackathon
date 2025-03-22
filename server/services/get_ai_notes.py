@@ -90,7 +90,7 @@ def get_notes(preferences, impairments, jobObjectRawString):
   job_prompt = fr"""The job I am looking at has these details. Compay: {company}, role : {role}, salary: {salary} dollars per year, Description: {description}, responsibilities: {responsibilities}, skills {skills}, type of work: {workType}, type of employment: {employmentType}, city: {city}"""
 
 
-  final_prompt = fr"""Please give me your response formatted as python lists titled matchNotes, jobNotes and salaryInsights. Give at most 5 notes per list. If the job is a bad fit, say that include that in the notes. The salary insights will be a list with only one string, just make sure to start the string with either COMPETITIVE, ABOVE-AVERAGE or BELOW_AVERAGE based on your judgement"""
+  final_prompt = fr"""Please give me your response formatted as python lists titled matchNotes, jobNotes and salaryInsights. Give at most 5 notes per list. If the job is a bad fit, say that include that in the notes. The salary insights will be a list with only one string, just make sure to start the string with either COMPETITIVE: , ABOVE-AVERAGE: or BELOW_AVERAGE: based on your judgement"""
   
   response = client.chat.completions.create(
       model=COMPLETIONS_MODEL, # model = "deployment_name".

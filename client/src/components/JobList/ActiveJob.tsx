@@ -79,11 +79,11 @@ function ActiveJob() {
 
 
   const getSalaryColor = (salaryString : string) => {
-    if (salaryString.startsWith("COMPETITIVE:")) {
+    if (salaryString.startsWith("COMPETITIVE")) {
         return "yellow";
-    } else if (salaryString.startsWith("ABOVE_AVERAGE:")) {
+    } else if (salaryString.startsWith("ABOVE_AVERAGE")) {
         return "green";
-    } else if (salaryString.startsWith("BELOW_AVERAGE:")) {
+    } else if (salaryString.startsWith("BELOW_AVERAGE")) {
         return "red";
     }
     return "yellow"; // Default case if none match
