@@ -8,36 +8,13 @@
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 10px;
-    background-color: #F4F2EE;
+    background-color: #f9f9f9;
     box-sizing: border-box;
     overflow: auto;
     position: relative;
     justify-content: center;
     align-items: center;
-  }
-
-  .add-job-link {
-    display: block;
-    background-color: #ffffff;
-    color: #009e2f;
-    border: 3px solid #009e2f;
-    border-radius: 15px;
-    padding: 5px 20px;
-    max-width: fit-content;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: auto;
-    margin-bottom: 10px;
-  
-    &:hover {
-      background-color: #009e2f;
-      border-color: #009e2f;
-      color: #fff;
-    }
-
-}
-    
+  } 
 
 /* For Tablets (iPads, typically 768px - 1024px wide) */
 @media (max-width: 1024px) {

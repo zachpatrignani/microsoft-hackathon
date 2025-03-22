@@ -3,7 +3,9 @@ import AddJobForm from '../components/AddJob/AddJobForm';
 
 function AddJob() {
     return (
-        <AddJobForm />
+        <div className='addJob'>
+            <AddJobForm />
+        </div>  
     );
 }
 

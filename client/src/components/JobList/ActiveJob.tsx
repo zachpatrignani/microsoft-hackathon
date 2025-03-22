@@ -20,6 +20,7 @@ function ActiveJob() {
 
   const [challengeBlurb, setChallengeBlurb] = useState<string[]>([]);
   const [matchBlurb, setMatchBlurb] = useState<string[]>([]);
+  const [salaryBlurb, setSalaryBlurb] = useState<string[]>([]);
 
 
 
@@ -57,11 +58,12 @@ function ActiveJob() {
       if (activeJobId !== undefined){
           
           let mapObject = notesMap.get(activeJobId);
-          if (mapObject?.challengeNotes !== undefined && mapObject?.matchNotes !== undefined){
+          if (mapObject?.challengeNotes !== undefined && mapObject?.matchNotes !== undefined && mapObject?.salaryInsights !== undefined){
             setMatchNotesAvailable(true);
             setChallengeNotesAvailable(true);
             setChallengeBlurb(mapObject.challengeNotes);
             setMatchBlurb(mapObject.matchNotes);
+            setSalaryBlurb(mapObject.salaryInsights);
           } 
           else{
             setMatchNotesAvailable(false);
@@ -74,6 +76,25 @@ function ActiveJob() {
       }
       
   },[notesMap, activeJobId]);
+
+
+  const getSalaryColor = (salaryString : string) => {
+    if (salaryString.startsWith("COMPETITIVE")) {
+        return "yellow";
+    } else if (salaryString.startsWith("ABOVE_AVERAGE")) {
+        return "green";
+    } else if (salaryString.startsWith("BELOW_AVERAGE")) {
+        return "red";
+    }
+    return "yellow"; // Default case if none match
+  };
+
+  const getSalaryString = (salaryString : string) => {
+    if (salaryString.split(":").length > 1) {
+        return salaryString.split(":")[1];
+    }
+    return salaryString; // Default case if none match
+  };
 
   return (
     <div className='ActiveJobView'>
@@ -92,14 +113,27 @@ function ActiveJob() {
         <div>
         </div>
       </div>
-
+      
       <div className='job-details-container'>
         <div className='secondary-title'>
           {activeJobObject?.company}
         </div>
-        <div className="job-location">{activeJobObject?.city},{activeJobObject?.state} - {activeJobObject?.workType}, {activeJobObject?.employmentType}</div>
-        <div className='job-salary'>${activeJobObject?.wage}/year</div>
-        <div className='job-date-posted'> posted {new Date(activeJobObject?._createdAt).toDateString()}</div>
+
+        <div className="horizontal-container">
+          <div className='vertical-container'>
+            <div className="job-location">{activeJobObject?.city},{activeJobObject?.state} - {activeJobObject?.workType}, {activeJobObject?.employmentType}</div>
+            <div className='job-salary'>${activeJobObject?.wage}/year</div>
+            <div className='job-date-posted'> posted {new Date(activeJobObject?._createdAt).toDateString()}</div>
+          </div>
+          {((matchNotesAvailable && salaryBlurb.length > 0) && 
+            <div className='salary-insights-container'>
+              <div className={`colored-container ${getSalaryColor(salaryBlurb[0])}`}>
+                <div>{getSalaryString(salaryBlurb[0])}</div>
+              </div>
+            </div>
+          )}
+        </div>
+
       </div>
 
       <div className='job-details-container'>
@@ -107,6 +141,7 @@ function ActiveJob() {
         <div className="employer-phone">{activeJobObject?.employerPhone}</div>
         <div className="employer-email">{activeJobObject?.employerEmail}</div>
       </div>
+
       
       {(matchNotesAvailable && 
         <div className='job-details-container'>

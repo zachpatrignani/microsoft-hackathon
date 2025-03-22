@@ -6,8 +6,8 @@
         position: absolute;
         top: 20px;  // Adjust spacing from the top
         right: 20px; // Adjust spacing from the right
-        background-color: #b474d6; // Primary blue color
-        color: #fff; // White text
+        background-color: #d5d2ff; // Primary blue color
+        color: #2c2a4a; // White text
         border: none;
         padding: 10px 20px;
         font-size: 16px;
@@ -18,12 +18,12 @@
         text-transform: uppercase;
 
         &:hover {
-            background-color: #7d3ba6; // Darker blue for hover
+            background-color: #b2aef5; // Darker blue for hover
             transform: translateY(-2px); // Slight lift effect
         }
 
         &:active {
-            background-color: #7d3ba6; // Even darker for active press
+            background-color: #b2aef5; // Even darker for active press
             transform: translateY(0px);
         }
     }
@@ -105,12 +105,12 @@
     /* Save (Generate) button */
     .save-button {
         // background: #4CAF50;
-        background: #b474d6;
-        color: white;
+        background: #d5d2ff;
+        color: #2c2a4a;
     }
 
     .save-button:hover {
-        background: #7d3ba6;
+        background: #b2aef5;
         cursor: pointer;
     }
 

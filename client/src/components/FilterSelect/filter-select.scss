@@ -13,8 +13,8 @@
 }
 .filter-btn {
     display: flex;
-    background-color: #b474d6; 
-    color: #fff; // White text
+    background-color: #d5d2ff; 
+    color: #2c2a4a; // White text
     border: none;
     font-size: 16px;
     font-weight: bold;
@@ -25,12 +25,12 @@
         transform 0.2s ease;
 
         &:hover {
-            background-color: #7d3ba6; // Darker blue for hover
+            background-color: #b2aef5; // Darker blue for hover
             transform: translateY(-2px); // Slight lift effect
         }
 
         &:active {
-            background-color: #7d3ba6; // Even darker for active press
+            background-color: #b2aef5; // Even darker for active press
             transform: translateY(0px);
         }
 }

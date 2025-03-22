@@ -46,6 +46,15 @@ ${jobObject.description}
 
     const skills = jobObject.skills?.split(", ");
 
+    const salary = `
+---
+
+## Salary Insights
+
+<div style="padding: 20px; border-radius: 5px; background-color: #eff5ab; color: black;">
+
+`
+
     const matches = `
 ---
 
@@ -85,6 +94,18 @@ ${jobObject.description}
 
         }
     }
+
+    returnString += salary;
+
+    if (noteObject?.salaryInsights !== undefined) {
+        for (let challenge of noteObject.salaryInsights) {
+            returnString += `- ${challenge}\n`;
+        }
+    }
+
+    returnString += `
+</div>
+`
 
     
 

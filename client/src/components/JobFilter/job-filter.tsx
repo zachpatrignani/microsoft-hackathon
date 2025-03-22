@@ -145,7 +145,7 @@ const JobFilter = () => {
         <div className="search-container">
           <form onSubmit={handleSubmit}>
             <input
-              placeholder={"Title/description"}
+              placeholder={"Title, description, company, or city"}
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -177,7 +177,7 @@ const JobFilter = () => {
           handleSelectionChange={handleDateChange}
         />
         <FilterSelect
-          name="Remote"
+          name="Workplace Type"
           buttonRef={remoteRef}
           isOpenFilter={openWorkTypeFilter}
           currentSelectedVal={selectedWorkType}
@@ -188,7 +188,7 @@ const JobFilter = () => {
           handleSelectionChange={handleWorkTypeChange}
         />
         <FilterSelect
-          name="Full-Time"
+          name="Employment Type"
           buttonRef={employmentTypeRef}
           isOpenFilter={openEmploymentTypeFilter}
           currentSelectedVal={selectedEmploymentType}

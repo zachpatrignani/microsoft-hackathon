@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Canva+Sans:wght@400;600;700&display=swap');
 
 
-.footer {
+.footer-job-list {
     display: flex;
     justify-content: space-between; /* Pushes pagination left & button right */
     align-items: center; /* Centers vertically */
@@ -36,10 +36,10 @@
 }
 
 .pagination .active a {
-    background: #b474d6;
-    color: white;
+    background: #d5d2ff;
+    color: #2c2a4a;
     font-weight: bold;
-    border-color: #b474d6;
+    border-color: #d5d2ff;
     
 }
 
@@ -59,8 +59,8 @@
 
 /* Export button */
 .export-button-container button {
-    background-color: #b474d6;
-    color: white;
+    background-color: #d5d2ff;
+    color: #2c2a4a;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -78,7 +78,7 @@
 }
 
 .export-button-container button:active {
-    background-color: #7d3ba6;
+    background-color: #b2aef5;
     transform: translateY(0);
 }
 
@@ -110,7 +110,7 @@
     display: flex;
     margin-bottom: 10px;
     background-color: #fff;
-    border: 2px solid #ddd;
+    border: 1px solid #ddd;
     // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     // padding: 10px;
     // height: 50px;
